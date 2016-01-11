@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Owbaz\JobseekerBundle\OwbazJobseekerBundle(),
             new Owbaz\EmployerBundle\OwbazEmployerBundle(),
             new Owbaz\JobsBundle\OwbazJobsBundle(),
+            new Owbaz\SiteBundle\OwbazSiteBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
