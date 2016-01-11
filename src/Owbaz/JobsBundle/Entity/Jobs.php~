@@ -3,6 +3,8 @@
 namespace Owbaz\JobsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  *@ORM\Entity(repositoryClass="Owbaz\JobsBundle\Repository\JobsRepository")
@@ -10,6 +12,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Jobs
 {
+
+    // ...
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Owbaz\EmployerBundle\Entity\Employees", inversedBy="jobs")
+     * @ORM\JoinColumn(name="employer_id", referencedColumnName="employer_id")
+     */
+    protected $employer;
+    
     /**
      * @var int
      *
@@ -198,5 +209,60 @@ class Jobs
     {
         return $this->isActive;
     }
-}
 
+    /**
+     * Set createdAt
+     *
+     * @param string $createdAt
+     *
+     * @return Jobs
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Jobs
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+
+
+    
+
+
+
+
+}
