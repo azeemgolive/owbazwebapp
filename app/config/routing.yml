@@ -1,3 +1,7 @@
+owbaz_jobs:
+    resource: "@OwbazJobsBundle/Resources/config/routing.yml"
+    prefix:   /
+
 owbaz_employer:
     resource: "@OwbazEmployerBundle/Resources/config/routing.yml"
     prefix:   /
