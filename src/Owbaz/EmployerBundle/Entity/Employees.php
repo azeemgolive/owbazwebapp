@@ -48,8 +48,37 @@ class Employees
     /**
      * @var string
      *
+     * @ORM\Column(name="employer_logo", type="string", length=255)
+     */
+    private $employer_logo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="employer_country", type="string", length=255)
+     */
+    private $employer_country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="employer_industry", type="string", length=255)
+     */
+    private $employer_industry;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="employer_type", type="string", length=255)
+     */
+    private $employer_type;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="password", type="string", length=255)
      */
+
     private $password;
 
     /**
@@ -337,5 +366,101 @@ class Employees
     public function getJobs()
     {
         return $this->jobs;
+    }
+
+    /**
+     * Set employerLogo
+     *
+     * @param string $employerLogo
+     *
+     * @return Employees
+     */
+    public function setEmployerLogo($employerLogo)
+    {
+        $this->employer_logo = $employerLogo;
+
+        return $this;
+    }
+
+    /**
+     * Get employerLogo
+     *
+     * @return string
+     */
+    public function getEmployerLogo()
+    {
+        return $this->employer_logo;
+    }
+
+    /**
+     * Set employerCountry
+     *
+     * @param string $employerCountry
+     *
+     * @return Employees
+     */
+    public function setEmployerCountry($employerCountry)
+    {
+        $this->employer_country = $employerCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get employerCountry
+     *
+     * @return string
+     */
+    public function getEmployerCountry()
+    {
+        return $this->employer_country;
+    }
+
+    /**
+     * Set employerIndustry
+     *
+     * @param string $employerIndustry
+     *
+     * @return Employees
+     */
+    public function setEmployerIndustry($employerIndustry)
+    {
+        $this->employer_industry = $employerIndustry;
+
+        return $this;
+    }
+
+    /**
+     * Get employerIndustry
+     *
+     * @return string
+     */
+    public function getEmployerIndustry()
+    {
+        return $this->employer_industry;
+    }
+
+    /**
+     * Set employerType
+     *
+     * @param string $employerType
+     *
+     * @return Employees
+     */
+    public function setEmployerType($employerType)
+    {
+        $this->employer_type = $employerType;
+
+        return $this;
+    }
+
+    /**
+     * Get employerType
+     *
+     * @return string
+     */
+    public function getEmployerType()
+    {
+        return $this->employer_type;
     }
 }
