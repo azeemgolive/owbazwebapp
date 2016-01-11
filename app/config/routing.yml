@@ -1,3 +1,8 @@
+owbaz_user:
+    resource: "@OwbazUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

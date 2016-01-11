@@ -10,3 +10,7 @@
 /vendor/
 /bin/
 /composer.phar
+
+nbproject/private/private.properties
+nbproject/project.xml
+*.properties
