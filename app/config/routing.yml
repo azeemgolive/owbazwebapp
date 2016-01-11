@@ -1,3 +1,11 @@
+owbaz_employer:
+    resource: "@OwbazEmployerBundle/Resources/config/routing.yml"
+    prefix:   /
+
+owbaz_jobseeker:
+    resource: "@OwbazJobseekerBundle/Resources/config/routing.yml"
+    prefix:   /
+
 owbaz_user:
     resource: "@OwbazUserBundle/Controller/"
     type:     annotation

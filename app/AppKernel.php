@@ -17,6 +17,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new Owbaz\UserBundle\OwbazUserBundle(),
+            new Owbaz\JobseekerBundle\OwbazJobseekerBundle(),
+            new Owbaz\EmployerBundle\OwbazEmployerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

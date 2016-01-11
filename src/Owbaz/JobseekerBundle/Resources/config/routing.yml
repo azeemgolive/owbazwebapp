@@ -1,0 +1,3 @@
+owbaz_jobseeker_homepage:
+    path:     /
+    defaults: { _controller: OwbazJobseekerBundle:Default:index }
