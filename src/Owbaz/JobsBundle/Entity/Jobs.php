@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  *@ORM\Entity(repositoryClass="Owbaz\JobsBundle\Repository\JobsRepository")
  * @ORM\Table(name="jobsite_jobs")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Jobs
 {
