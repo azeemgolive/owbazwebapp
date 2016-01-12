@@ -169,38 +169,5 @@ class Countries
     {
         return $this->updatedAt;
     }
-
-    /**
-     * Add location
-     *
-     * @param \Owbaz\SiteBundle\Entity\Locations $location
-     *
-     * @return Countries
-     */
-    public function addLocation(\Owbaz\SiteBundle\Entity\Locations $location)
-    {
-        $this->location[] = $location;
-
-        return $this;
-    }
-
-    /**
-     * Remove location
-     *
-     * @param \Owbaz\SiteBundle\Entity\Locations $location
-     */
-    public function removeLocation(\Owbaz\SiteBundle\Entity\Locations $location)
-    {
-        $this->location->removeElement($location);
-    }
-
-    /**
-     * Get location
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
 }
+

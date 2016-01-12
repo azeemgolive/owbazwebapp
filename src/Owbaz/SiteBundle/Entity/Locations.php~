@@ -135,28 +135,5 @@ class Locations
     {
         return $this->updatedAt;
     }
-
-    /**
-     * Set country
-     *
-     * @param \Owbaz\SiteBundle\Entity\Countries $country
-     *
-     * @return Locations
-     */
-    public function setCountry(\Owbaz\SiteBundle\Entity\Countries $country = null)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return \Owbaz\SiteBundle\Entity\Countries
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
 }
+
