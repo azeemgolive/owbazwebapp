@@ -15,7 +15,7 @@ class Countries
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Locations", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="Locations", mappedBy="country",orphanRemoval=true)
      */
 
     protected $location;

@@ -15,7 +15,7 @@ class Employees
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="employer")
+     * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="employer",orphanRemoval=true)
      */
 
     protected $jobs;

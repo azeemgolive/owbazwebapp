@@ -18,7 +18,7 @@ class Locations
 
     /**
      * @ORM\ManyToOne(targetEntity="Countries", inversedBy="location")
-     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id",onDelete="CASCADE")
      */
      protected $country;
 

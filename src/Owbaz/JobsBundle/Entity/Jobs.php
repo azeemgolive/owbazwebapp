@@ -18,7 +18,7 @@ class Jobs
 
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\EmployerBundle\Entity\Employees", inversedBy="jobs")
-     * @ORM\JoinColumn(name="employer_id", referencedColumnName="employer_id")
+     * @ORM\JoinColumn(name="employer_id", referencedColumnName="employer_id",onDelete="CASCADE")
      */
     protected $employer;
     
