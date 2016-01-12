@@ -14,3 +14,4 @@
 nbproject/private/private.properties
 nbproject/project.xml
 *.properties
+composer.lock

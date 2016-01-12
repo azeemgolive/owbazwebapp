@@ -95,14 +95,14 @@ class Employees
     private $contactPerson;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="company_description", type="string", length=255)
+     * @ORM\Column(name="company_description", type="text")
      */
     private $companyDescription;
 
     /**
-     * @var string
+     * @var text
      *
      * @ORM\Column(name="address", type="text")
      */
@@ -111,7 +111,7 @@ class Employees
     /**
      * @var string
      *
-     * @ORM\Column(name="phone_number", type="text")
+     * @ORM\Column(name="phone_number", type="string")
      */
     private $phoneNumber;
 
