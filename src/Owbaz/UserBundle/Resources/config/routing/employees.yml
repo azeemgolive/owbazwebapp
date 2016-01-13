@@ -1,0 +1,3 @@
+owbaz_user_employees_new:
+    pattern:  /users/employees/new
+    defaults: { _controller: OwbazUserBundle:User:NewEmployer }

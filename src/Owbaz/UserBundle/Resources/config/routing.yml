@@ -1,0 +1,7 @@
+owbaz_employeer_routes:
+    resource: "@OwbazUserBundle/Resources/config/routing/employees.yml"
+    prefix:   /
+    
+owbaz_jobseeker_routes:
+    resource: "@OwbazUserBundle/Resources/config/routing/jobseekers.yml"
+    prefix:   /

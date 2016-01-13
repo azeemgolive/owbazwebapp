@@ -1,0 +1,7 @@
+owbaz_user_employees_new:
+    pattern:  /users/jobseeker/new
+    defaults: { _controller: OwbazUserBundle:User:newJobseeker }
+
+users_jobseekers_create:
+    pattern:  /users/jobseeker/create
+    defaults: { _controller: OwbazUserBundle:User:createJobseeker }

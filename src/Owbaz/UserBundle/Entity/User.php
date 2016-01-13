@@ -64,28 +64,28 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="phone_number", type="string", length=255)
+     * @ORM\Column(name="phone_number", type="string", length=255,nullable=true)
      */
     private $phone_number;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="mobile_number", type="string", length=255)
+     * @ORM\Column(name="mobile_number", type="string", length=255,nullable=true)
      */
     private $mobile_number;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="text")
+     * @ORM\Column(name="address", type="text",nullable=true)
      */
     private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="contact_person", type="string", length=255)
+     * @ORM\Column(name="contact_person", type="string", length=255,nullable=true)
      */
     private $contact_person;
 
@@ -93,90 +93,90 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="user_education", type="string", length=255)
+     * @ORM\Column(name="user_education", type="string", length=255,nullable=true)
      */
     private $user_education;
     
      /**
      * @var string
      *
-     * @ORM\Column(name="user_experience", type="string", length=255)
+     * @ORM\Column(name="user_experience", type="string", length=255,nullable=true)
      */
     private $user_experience;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="company_name", type="string", length=255)
+     * @ORM\Column(name="company_name", type="string", length=255,nullable=true)
      */
     private $company_name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="user_nationality", type="string", length=255)
+     * @ORM\Column(name="user_nationality", type="string", length=255,nullable=true)
      */
     private $user_nationality;
     /**
      * @var string
      *
-     * @ORM\Column(name="gender", type="string", length=10)
+     * @ORM\Column(name="gender", type="string", length=10,nullable=true)
      */
     private $gender;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birth_date", type="date")
+     * @ORM\Column(name="birth_date", type="date",nullable=true)
      */
     private $birth_date;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="createdAt", type="datetime",nullable=true)
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updatedAt", type="datetime",nullable=true)
      */
     private $updatedAt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="user_image", type="string", length=255)
+     * @ORM\Column(name="user_image", type="string", length=255,nullable=true)
      */
     private $user_image;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="company_logo", type="string", length=255)
+     * @ORM\Column(name="company_logo", type="string", length=255,nullable=true)
      */
     private $company_logo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="company_website", type="string", length=255)
+     * @ORM\Column(name="company_website", type="string", length=255,nullable=true)
      */
     private $company_website;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="user_type", type="string", length=255)
+     * @ORM\Column(name="user_type", type="string", length=255,nullable=true)
      */
     private $user_type;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="company_description", type="text")
+     * @ORM\Column(name="company_description", type="text",nullable=true)
      */
     private $company_description;
     

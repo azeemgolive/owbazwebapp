@@ -15,8 +15,7 @@ owbaz_jobseeker:
     prefix:   /
 
 owbaz_user:
-    resource: "@OwbazUserBundle/Controller/"
-    type:     annotation
+    resource: "@OwbazUserBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:
