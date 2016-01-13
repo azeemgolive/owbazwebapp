@@ -155,4 +155,3 @@ class JobsCategories
         return $this->updatedAt;
     }
 }
-

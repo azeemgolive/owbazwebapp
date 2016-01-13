@@ -20,8 +20,19 @@ class Locations
      * @ORM\ManyToOne(targetEntity="Countries", inversedBy="location")
      * @ORM\JoinColumn(name="country_id", referencedColumnName="id",onDelete="CASCADE")
      */
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Owbaz\UserBundle\Entity\User", mappedBy="location",orphanRemoval=true)
+     */
+    
      protected $country;
 
+     protected $users; 
+     
+   public function __construct()
+    {
+        $this->users = new ArrayCollection();       
+    }
 
     /**
      * @var int
@@ -158,5 +169,29 @@ class Locations
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Add country
+     *
+     * @param \Owbaz\UserBundle\Entity\User $country
+     *
+     * @return Locations
+     */
+    public function addCountry(\Owbaz\UserBundle\Entity\User $country)
+    {
+        $this->country[] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Remove country
+     *
+     * @param \Owbaz\UserBundle\Entity\User $country
+     */
+    public function removeCountry(\Owbaz\UserBundle\Entity\User $country)
+    {
+        $this->country->removeElement($country);
     }
 }

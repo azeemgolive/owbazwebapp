@@ -13,16 +13,23 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Countries
 {
-
+  //--------------------------------------one to many relationship with locations------------------------------
     /**
      * @ORM\OneToMany(targetEntity="Locations", mappedBy="country",orphanRemoval=true)
      */
-
+  //--------------------------------------one to many relationship with Usrs------------------------------
+    /**
+     * @ORM\OneToMany(targetEntity="Owbaz\UserBundle\Entity\User", mappedBy="country",orphanRemoval=true)
+     */
+    
+    
     protected $location;
-
+    protected $users;
+    
     public function __construct()
     {
         $this->location = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
 

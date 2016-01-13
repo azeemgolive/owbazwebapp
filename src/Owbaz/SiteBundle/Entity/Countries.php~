@@ -13,16 +13,23 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Countries
 {
-
+  //--------------------------------------one to many relationship with locations------------------------------
     /**
-     * @ORM\OneToMany(targetEntity="Locations", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="Locations", mappedBy="country",orphanRemoval=true)
      */
-
+  //--------------------------------------one to many relationship with Usrs------------------------------
+    /**
+     * @ORM\OneToMany(targetEntity="Owbaz\UserBundle\Entity\User", mappedBy="country",orphanRemoval=true)
+     */
+    
+    
     protected $location;
-
+    protected $users;
+    
     public function __construct()
     {
         $this->location = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
 
@@ -169,5 +176,38 @@ class Countries
     {
         return $this->updatedAt;
     }
-}
 
+    /**
+     * Add location
+     *
+     * @param \Owbaz\SiteBundle\Entity\Locations $location
+     *
+     * @return Countries
+     */
+    public function addLocation(\Owbaz\SiteBundle\Entity\Locations $location)
+    {
+        $this->location[] = $location;
+
+        return $this;
+    }
+
+    /**
+     * Remove location
+     *
+     * @param \Owbaz\SiteBundle\Entity\Locations $location
+     */
+    public function removeLocation(\Owbaz\SiteBundle\Entity\Locations $location)
+    {
+        $this->location->removeElement($location);
+    }
+
+    /**
+     * Get location
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+}
