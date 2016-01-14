@@ -171,7 +171,7 @@ class User
      *
      * @ORM\Column(name="user_type", type="string", length=255,nullable=true)
      */
-    private $user_type;
+    public $user_type;
 
     /**
      * @var string
@@ -293,7 +293,7 @@ class User
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = md5($password);
 
         return $this;
     }

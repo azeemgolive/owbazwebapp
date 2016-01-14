@@ -25,22 +25,19 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.346153">
-              <caret line="593" column="33" selection-start-line="593" selection-start-column="20" selection-end-line="593" selection-end-column="33" />
+            <state vertical-scroll-proportion="-13.384615">
+              <caret line="295" column="40" selection-start-line="295" selection-start-column="40" selection-end-line="295" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="employees.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing/employees.yml">
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-              <folding>
-                <marker date="1452760233364" expanded="true" signature="120:254" placeholder="owbaz_user_employees_create:" />
-                <marker date="1452760233364" expanded="true" signature="319:374" placeholder="defaults:" />
-              </folding>
+              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -48,8 +45,8 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38793105">
-              <caret line="84" column="53" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.6189655">
+              <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
               <folding>
                 <element signature="e#47#80#0#PHP" expanded="true" />
               </folding>
@@ -60,10 +57,10 @@
       <file leaf-file-name="UserRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Repository/UserRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.076923">
-              <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+            <state vertical-scroll-proportion="-15.038462">
+              <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
               <folding>
-                <marker date="1452758822296" expanded="true" signature="393:490" placeholder="SELECT s FRO..OwbazUserBundle..." />
+                <marker date="1452767830558" expanded="true" signature="406:503" placeholder="SELECT u FRO..OwbazUserBundle..." />
               </folding>
             </state>
           </provider>
@@ -81,23 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JobseekerType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Form/Type/JobseekerType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.26923">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding>
-                <element signature="e#45#85#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="EmployerType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Form/Type/EmployerType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.038462">
-              <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
               <folding>
                 <element signature="e#45#85#0#PHP" expanded="true" />
               </folding>
@@ -109,20 +94,11 @@
         <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing/jobseekers.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="25" />
+              <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="34" />
               <folding>
-                <marker date="1452760223799" expanded="true" signature="127:258" placeholder="users_jobseekers_create:" />
+                <marker date="1452768541279" expanded="true" signature="259:390" placeholder="owbaz_jobseeker_dashboard:" />
+                <marker date="1452768541279" expanded="true" signature="324:388" placeholder="defaults:" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/Jobseekers/new.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="51" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="51" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -148,17 +124,17 @@
         <option value="$PROJECT_DIR$/src/Owbaz/EmployerBundle/Controller/EmployerController.php" />
         <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/Employers/thanks.html.twig" />
         <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/Employers/new.html.twig" />
-        <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Form/Type/EmployerType.php" />
         <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/User/new.html.twig" />
         <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/User/dashboard.html.twig" />
-        <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/User/login.html.twig" />
-        <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Repository/UserRepository.php" />
         <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/Employers/dashboard.html.twig" />
         <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/Jobseekers/dashboard.html.twig" />
+        <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Repository/UserRepository.php" />
+        <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing/jobseekers.yml" />
         <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing/employees.yml" />
+        <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Owbaz/UserBundle/Controller/UserController.php" />
       </list>
     </option>
@@ -705,7 +681,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="73" />
           <folding>
-            <element signature="e#45#85#0#PHP" expanded="true" />
+            <element signature="e#45#85#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -971,64 +947,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Form/Type/EmployerType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.038462">
-          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
-          <folding>
-            <element signature="e#45#85#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Form/Type/JobseekerType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.26923">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#45#85#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/Employers/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="50" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/Jobseekers/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="51" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/User/dashboard.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/User/login.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769">
-          <caret line="21" column="87" selection-start-line="21" selection-start-column="87" selection-end-line="21" selection-end-column="87" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.346153">
-          <caret line="593" column="33" selection-start-line="593" selection-start-column="20" selection-end-line="593" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -1049,49 +971,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing.yml">
+    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/Employers/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25247526">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="31" />
+        <state vertical-scroll-proportion="-0.2637931">
+          <caret line="0" column="50" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing/jobseekers.yml">
+    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/Jobseekers/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="25" />
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="51" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Form/Type/JobseekerType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9086207">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
-            <marker date="1452760223799" expanded="true" signature="127:258" placeholder="users_jobseekers_create:" />
+            <element signature="e#45#85#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing/employees.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.028052805">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/views/User/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.730769">
+          <caret line="21" column="87" selection-start-line="21" selection-start-column="87" selection-end-line="21" selection-end-column="87" />
           <folding>
-            <marker date="1452760233364" expanded="true" signature="120:254" placeholder="owbaz_user_employees_create:" />
-            <marker date="1452760233364" expanded="true" signature="319:374" placeholder="defaults:" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Form/Type/EmployerType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+          <folding>
+            <element signature="e#45#85#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Repository/UserRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.076923">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+        <state vertical-scroll-proportion="-15.038462">
+          <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
           <folding>
-            <marker date="1452758822296" expanded="true" signature="393:490" placeholder="SELECT s FRO..OwbazUserBundle..." />
+            <marker date="1452767830558" expanded="true" signature="406:503" placeholder="SELECT u FRO..OwbazUserBundle..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing/jobseekers.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="34" />
+          <folding>
+            <marker date="1452768541279" expanded="true" signature="259:390" placeholder="owbaz_jobseeker_dashboard:" />
+            <marker date="1452768541279" expanded="true" signature="324:388" placeholder="defaults:" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.384615">
+          <caret line="295" column="40" selection-start-line="295" selection-start-column="40" selection-end-line="295" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Owbaz/UserBundle/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38793105">
-          <caret line="84" column="53" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.6189655">
+          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
           <folding>
             <element signature="e#47#80#0#PHP" expanded="true" />
           </folding>

@@ -8,4 +8,4 @@ owbaz_user_employees_create:
 
 owbaz_employer_dashboard:
     pattern:  employees/dashboard
-    defaults: { _controller: OwbazUserBundle:User:dashboard }
+    defaults: { _controller: OwbazUserBundle:User:employerdashboard }

@@ -36,10 +36,8 @@ class UserController extends Controller
         if($form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
-            $password =$request->get('password');
             $entity->setCreatedAt(new \DateTime('now'));
             $entity->setUpdatedAt(new \DateTime('now'));
-            $entity->setPassword(md5($password));
             $em->persist($entity);
             $em->flush();
         }
@@ -61,10 +59,8 @@ class UserController extends Controller
         $form->bind($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $password =$request->get('password');
             $entity->setCreatedAt(new \DateTime('now'));
             $entity->setUpdatedAt(new \DateTime('now'));
-            $entity->setPassword(md5($password));
             $em->persist($entity);
             $em->flush();
         }
@@ -83,15 +79,16 @@ class UserController extends Controller
         $password = $request->get('password');
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('OwbazUserBundle:User')->userLogin($email,md5($password));
-      //  return new response(json_encode($entity->getId()));
+        //return new Response($em);
         if($entity)
         {
-           if($entity->getUserType()=='jobseeker')
+
+           if($entity->user_type=="jobseeker")
            {
-               return $this->redirect($this->generateUrl('owbaz_jobseeker_dashboard',array('jobseeker' =>$entity)));
+               return $this->redirect($this->generateUrl('owbaz_jobseeker_dashboard'));
            }else
            {
-               return $this->redirect($this->generateUrl('owbaz_employer_dashboard',array('employer' =>$entity)));
+               return $this->redirect($this->generateUrl('owbaz_employer_dashboard'));
            }
 
             //$user_name =  $session->set('name', 'Rahul');
@@ -110,9 +107,13 @@ class UserController extends Controller
         }
     }
 
-    public function userDashboardAction()
+    public function employerdashboardAction()
     {
-        return $this->render('OwbazUserBundle:User:dashboard.html.twig');
+        return $this->render('OwbazUserBundle:Employers:dashboard.html.twig');
+    }
+    public function jobseekerdashboardAction()
+    {
+        return $this->render('OwbazUserBundle:Jobseekers:dashboard.html.twig');
     }
     //---------------------------------------------------------------------
 

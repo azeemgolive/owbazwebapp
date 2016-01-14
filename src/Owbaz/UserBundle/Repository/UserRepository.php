@@ -14,15 +14,16 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     public function userLogin($email,$password)
     {
         $query = $this->getEntityManager()
-            ->createQuery("SELECT s FROM OwbazUserBundle:User s
-     WHERE
-     s.email=:email
-     AND s.password=:password"
+            ->createQuery("
+            SELECT u FROM OwbazUserBundle:User u
+            WHERE u.email = :email AND u.password= :password"
             )->setParameters(array('email' => $email, 'password' =>$password));
+
         try {
-            return $query->getResult();
+            return $query->getSingleResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
             return null;
         }
     }
+
 }

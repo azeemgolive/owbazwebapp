@@ -8,4 +8,4 @@ users_jobseekers_create:
 
 owbaz_jobseeker_dashboard:
     pattern:  jobseeker/dashboard
-    defaults: { _controller: OwbazUserBundle:User:dashboard }
+    defaults: { _controller: OwbazUserBundle:User:jobseekerdashboard }
