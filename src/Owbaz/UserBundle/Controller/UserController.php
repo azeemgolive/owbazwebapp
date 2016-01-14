@@ -82,10 +82,17 @@ class UserController extends Controller
         $email =  $request->get('email');
         $password = $request->get('password');
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('OwbazUserBundle:User')->adminLogin($email,md5($password));
-
+        $entity = $em->getRepository('OwbazUserBundle:User')->userLogin($email,md5($password));
+      //  return new response(json_encode($entity->getId()));
         if($entity)
         {
+           if($entity->getUserType()=='jobseeker')
+           {
+               return $this->redirect($this->generateUrl('owbaz_jobseeker_dashboard',array('jobseeker' =>$entity)));
+           }else
+           {
+               return $this->redirect($this->generateUrl('owbaz_employer_dashboard',array('employer' =>$entity)));
+           }
 
             //$user_name =  $session->set('name', 'Rahul');
 
@@ -107,7 +114,7 @@ class UserController extends Controller
     {
         return $this->render('OwbazUserBundle:User:dashboard.html.twig');
     }
-    //--------------------------------------------------------------------- 
+    //---------------------------------------------------------------------
 
     private function getEditForm($entity) {
         return $this->createForm(new JobseekerType(), $entity);

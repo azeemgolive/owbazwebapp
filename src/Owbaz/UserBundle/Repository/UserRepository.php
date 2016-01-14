@@ -11,14 +11,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function adminLogin($email,$password)
+    public function userLogin($email,$password)
     {
         $query = $this->getEntityManager()
             ->createQuery("SELECT s FROM OwbazUserBundle:User s
      WHERE
-     s.userName=:userName
+     s.email=:email
      AND s.password=:password"
-            )->setParameters(array('userName' => $email, 'password' =>$password));
+            )->setParameters(array('email' => $email, 'password' =>$password));
         try {
             return $query->getResult();
         } catch (\Doctrine\ORM\NoResultException $e) {
