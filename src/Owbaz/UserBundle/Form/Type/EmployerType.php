@@ -11,7 +11,7 @@ class EmployerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('email');
-        $builder->add('password');
+        $builder->add('password','password');
         $builder->add('company_name');
         $builder->add('contact_person');
         $builder->add('user_type','hidden',array('data' => 'employer'));

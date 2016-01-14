@@ -5,3 +5,7 @@ owbaz_employeer_routes:
 owbaz_jobseeker_routes:
     resource: "@OwbazUserBundle/Resources/config/routing/jobseekers.yml"
     prefix:   /
+
+owbaz_users_login:
+    pattern:  /owbaz/user/login
+    defaults: { _controller: OwbazUserBundle:User:userLogin }

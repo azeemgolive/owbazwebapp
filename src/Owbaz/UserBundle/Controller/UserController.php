@@ -28,7 +28,7 @@ class UserController extends Controller
 
     }
     //-------------------------------create new employer------------------------------------------------
-    public function createNewEmployerAction(Request $request)
+    public function createEmployerAction(Request $request)
     {
         $entity = new User();
         $form = $this->createForm(new EmployerType(), $entity);
@@ -36,8 +36,10 @@ class UserController extends Controller
         if($form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
+            $password =$request->get('password');
             $entity->setCreatedAt(new \DateTime('now'));
             $entity->setUpdatedAt(new \DateTime('now'));
+            $entity->setPassword(md5($password));
             $em->persist($entity);
             $em->flush();
         }
@@ -59,14 +61,20 @@ class UserController extends Controller
         $form->bind($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $password =$request->get('password');
             $entity->setCreatedAt(new \DateTime('now'));
             $entity->setUpdatedAt(new \DateTime('now'));
+            $entity->setPassword(md5($password));
             $em->persist($entity);
             $em->flush();
         }
         return $this->render('OwbazUserBundle:Jobseekers:thanks.html.twig');
     }
-    
+
+    public function userLoginAction()
+    {
+        return $this->render('OwbazUserBundle:User:login.html.twig');
+    }
     //--------------------------------------------------------------------- 
 
     private function getEditForm($entity) {
