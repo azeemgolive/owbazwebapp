@@ -1,6 +1,7 @@
 <?php
 
 namespace Owbaz\UserBundle\Repository;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * UserRepository
@@ -10,4 +11,18 @@ namespace Owbaz\UserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function adminLogin($email,$password)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("SELECT s FROM OwbazUserBundle:User s
+     WHERE
+     s.userName=:userName
+     AND s.password=:password"
+            )->setParameters(array('userName' => $email, 'password' =>$password));
+        try {
+            return $query->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 }

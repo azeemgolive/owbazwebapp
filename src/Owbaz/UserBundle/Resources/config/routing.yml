@@ -9,3 +9,11 @@ owbaz_jobseeker_routes:
 owbaz_users_login:
     pattern:  /owbaz/user/login
     defaults: { _controller: OwbazUserBundle:User:userLogin }
+
+owbaz_users_login_check:
+    pattern:  /owbaz/user/checklogin
+    defaults: { _controller: OwbazUserBundle:User:checkUserLogin }
+
+owbaz_users_dashboard:
+    pattern:  /owbaz/user/dashboard
+    defaults: { _controller: OwbazUserBundle:User:userDashboard }

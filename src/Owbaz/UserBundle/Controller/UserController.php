@@ -75,6 +75,38 @@ class UserController extends Controller
     {
         return $this->render('OwbazUserBundle:User:login.html.twig');
     }
+
+    public function checkUserLoginAction(Request $request)
+    {
+        $request  = $this->getRequest();
+        $email =  $request->get('email');
+        $password = $request->get('password');
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('OwbazUserBundle:User')->adminLogin($email,md5($password));
+
+        if($entity)
+        {
+
+            //$user_name =  $session->set('name', 'Rahul');
+
+
+            return $this->redirect($this->generateUrl('owbaz_users_dashboard')); // redirect change url of the page
+            //  return  $this->render('TalhaBundkhaAdminBundle:Admin:dashboard.html.twig');  render page
+        }else
+        {
+            $this->addFlash(
+                'error',
+                'Invalid User Name And Password'
+            );
+            return $this->redirect($this->generateUrl('owbaz_users_login'));
+
+        }
+    }
+
+    public function userDashboardAction()
+    {
+        return $this->render('OwbazUserBundle:User:dashboard.html.twig');
+    }
     //--------------------------------------------------------------------- 
 
     private function getEditForm($entity) {
