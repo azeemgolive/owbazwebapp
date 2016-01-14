@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Countries
  *
- * @ORM\Table(name="countries")
+ * @ORM\Table(name="jobsite_countries")
  * @ORM\Entity(repositoryClass="Owbaz\SiteBundle\Repository\CountriesRepository")
  */
 class Countries
@@ -55,7 +55,13 @@ class Countries
      * @ORM\Column(name="country_code", type="string", length=255)
      */
     private $countryCode;
-
+ /**
+     * @var string
+     *
+     * @ORM\Column(name="iso2", type="string", length=255)
+     */
+    private $iso2;
+    
     /**
      * @var \DateTime
      *
@@ -209,5 +215,29 @@ class Countries
     public function getLocation()
     {
         return $this->location;
+    }
+
+    /**
+     * Set iso2
+     *
+     * @param string $iso2
+     *
+     * @return Countries
+     */
+    public function setIso2($iso2)
+    {
+        $this->iso2 = $iso2;
+
+        return $this;
+    }
+
+    /**
+     * Get iso2
+     *
+     * @return string
+     */
+    public function getIso2()
+    {
+        return $this->iso2;
     }
 }

@@ -170,4 +170,28 @@ class Locations
     {
         return $this->country;
     }
+
+    /**
+     * Add country
+     *
+     * @param \Owbaz\UserBundle\Entity\User $country
+     *
+     * @return Locations
+     */
+    public function addCountry(\Owbaz\UserBundle\Entity\User $country)
+    {
+        $this->country[] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Remove country
+     *
+     * @param \Owbaz\UserBundle\Entity\User $country
+     */
+    public function removeCountry(\Owbaz\UserBundle\Entity\User $country)
+    {
+        $this->country->removeElement($country);
+    }
 }

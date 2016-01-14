@@ -17,6 +17,12 @@ class EmployerType extends AbstractType
         $builder->add('user_type','hidden',array('data' => 'employer'));
         $builder->add('company_description');
         $builder->add('address');
+        $builder ->add('country', 'entity', array(
+                    'class' => 'OwbazSiteBundle:Countries',
+                    'expanded' => false,
+                    'multiple' => false,
+                    'property' => 'country_name',
+                )); 
         $builder->add('company_website');
             
     }

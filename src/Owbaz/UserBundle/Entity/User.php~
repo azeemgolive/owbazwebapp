@@ -36,28 +36,28 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="first_name",type="string", length=255)
+     * @ORM\Column(name="first_name",type="string", length=255,nullable=true)
      */
     private $first_name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last_name", type="string", length=255)
+     * @ORM\Column(name="last_name", type="string", length=255,nullable=true)
      */
     private $last_name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255,nullable=true)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=255,nullable=true)
      */
     private $password;
 
