@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Owbaz\UserBundle\Form\Type\JobseekerType;
+use Owbaz\UserBundle\Form\Type\EmployerType;
 
 class UserController extends Controller
 {
@@ -20,12 +21,27 @@ class UserController extends Controller
     //-------------------------------add new employer Form------------------------------------------------
     public function NewEmployerAction()
     {
-       
+            $entity = new User();
+            $form = $this->createForm(new EmployerType(), $entity);
+        return $this->render('OwbazUserBundle:Employers:new.html.twig', array(
+            'form' => $form->createView()));
+
     }
     //-------------------------------create new employer------------------------------------------------
-    public function createNewEmployerAction()
+    public function createNewEmployerAction(Request $request)
     {
-        
+        $entity = new User();
+        $form = $this->createForm(new EmployerType(), $entity);
+        $form->bind($request);
+        if($form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $entity->setCreatedAt(new \DateTime('now'));
+            $entity->setUpdatedAt(new \DateTime('now'));
+            $em->persist($entity);
+            $em->flush();
+        }
+        return $this->render('OwbazUserBundle:Employers:thanks.html.twig');
     }
     //-------------------------------add new jobseeker Form------------------------------------------------
     public function newJobseekerAction()
