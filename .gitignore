@@ -16,3 +16,4 @@ nbproject/project.xml
 *.properties
 composer.lock
 nbproject/private/private.xml
+.idea/workspace.xml
