@@ -30,6 +30,83 @@
     </div>
 </footer>
 
+<!-----    Login PopUp ----------------->
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3>
+                    Login        	</h3>
+            </div>
+
+
+            <div class="modal-body">
+
+                <script>
+                    function ValidateLoginForm(x)
+                    {
+                        if(x.Email.value=="")
+                        {
+                            document.getElementById("top_msg_header").innerHTML=
+                                    "Please enter the email address!";
+                            x.Email.focus();
+                            return false;
+                        }
+                        else
+                        if(x.Password.value=="")
+                        {
+
+                            document.getElementById("top_msg_header").innerHTML=
+                                    "Please enter the password!";
+                            x.Password.focus();
+                            return false;
+                        }
+                        return true;
+                    }
+                </script>
+                <div id="apply-job">
+                    <form class="no-margin" action="loginaction.php" method="post" onsubmit="return ValidateLoginForm(this)">
+
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">Email:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail3" placeholder="Email" name="Email" autocomplete="off"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-4 upper_gap control-label">Password:</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="password" name="Password" id="inputPassword3" placeholder="Password" autocomplete="off" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <a class="pull-left margin-20 underline-link upper_gap align_forget_btn relative-top-10" href="mod-forgotten_password.html">Forgotten password?</a>
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" class="btn btn-info" value="Login"/>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-----   End Login PopUp ----------------->
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
