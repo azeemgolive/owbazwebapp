@@ -5,10 +5,8 @@ namespace Owbaz\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Clients
- *
- * @ORM\Table(name="clients")
  * @ORM\Entity(repositoryClass="Owbaz\SiteBundle\Repository\ClientsRepository")
+ * @ORM\Table(name="jobsite_clients")
  */
 class Clients
 {
