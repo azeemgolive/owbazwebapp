@@ -255,3 +255,9 @@ footer ul.navsocial li+li+li:hover a { color:#C0392B}
     background-color: #fff;
     margin-top: 10px;
 }
+
+#jobListing article {
+    background-color: #efefef;
+    height: auto;
+    padding-bottom: 10px;
+}

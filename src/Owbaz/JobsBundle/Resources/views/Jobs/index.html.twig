@@ -1,17 +1,23 @@
 {% include 'OwbazSiteBundle::top_navigation.html.twig' %}
 {% for job in jobs%}
-<div id="jobListing"><article class="container">
+    <div id="jobListing">
+        <article class="container">
             <div class="col-md-12">
-	           <div class="row">	<div class="col-md-6 col-xs-8 col-sm-8"><h1><a href="">{{job.jobTitle}}</a></h1></div>      </div>  <div class="job_position"><div class="col-md-8">
-                <ul>
-                    
-                <li>Job Type: <strong>{{job.jobType}}</strong></li><li>Location: <strong>{{job.location.locationName }}</strong></li><li>Salary: <strong>{{job.jobSalary}}</strong></li>  <li>Posted on: <strong>{{ job.startDate|date('d-m-Y') }}</strong></li><li>Last Date to Apply: <strong>{{ job.expireDate|date('d-m-Y') }}</strong></li><li>Posted by: <strong>{{job.users.CompanyName }}</strong></li></ul>
-            <a href=""></a></div><div class="col-md-4"><div class="company-wrap" style="float: right; height: 200px !important;"><a href="job-procurement-manager-113.html">
-                            {%if(job.users.CompanyLogo)%}                  
-                  <img src="{{ asset(job.users.CompanyWebPath) }}"/>        
-                    {%endif%} 
-                          </a></div></div><a href="">   </a></div><div class="col-md-4 col-xs-6 col-sm-6"></div><div class="col-md-4 col-xs-6 col-sm-6"><a id="applyjob" href="">Click for more job Details</a></div>	<br></div></article></div>
-    
+                <div class="row">	
+                    <div class="col-md-6 col-xs-8 col-sm-8">
+                        <h1><a href="">{{job.jobTitle}}</a></h1>
+                    </div>     
+                </div>
+                    <div class="job_position"><div class="col-md-8">
+                        <ul>
+
+                            <li>Job Type: <strong>{{job.jobcategory.jobCategoryName }}</strong></li><li>Location: <strong>{{job.location.locationName }}</strong></li><li>Salary: <strong>{{job.jobSalary}}</strong></li>  <li>Posted on: <strong>{{ job.startDate|date('d-m-Y') }}</strong></li><li>Last Date to Apply: <strong>{{ job.expireDate|date('d-m-Y') }}</strong></li><li>Posted by: <strong>{{job.users.CompanyName }}</strong></li></ul>
+                        <a href=""></a></div><div class="col-md-4"><div class="company-wrap" style="float: right; height: 200px !important;"><a href="job-procurement-manager-113.html">
+                        {%if(job.users.CompanyLogo)%}                  
+                                    <img src="{{ asset(job.users.CompanyWebPath) }}" class="img-responsive logo-results"/>        
+                                {%endif%} 
+                            </a></div></div><a href="">   </a></div><div class="col-md-4 col-xs-6 col-sm-6"></div><div class="col-md-4 col-xs-6 col-sm-6"><a id="applyjob" href="">Click for more job Details</a></div>	<br></div></article></div>
+
 {% endfor %}    
 
 {% include 'OwbazSiteBundle::bottom_navigation.html.twig' %}
