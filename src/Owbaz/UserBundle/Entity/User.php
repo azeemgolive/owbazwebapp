@@ -24,6 +24,18 @@ class User
      * @ORM\JoinColumn(name="location_id", referencedColumnName="id",onDelete="CASCADE")
      */
       protected $location;
+      
+    /**
+     * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="users",orphanRemoval=true)
+     */
+    protected $jobs;  
+    
+      
+    public function __construct()
+    {
+        $this->jobs = new ArrayCollection();
+    }
+    
     /**
      * @var int
      *
@@ -834,5 +846,39 @@ class User
     public function getAuthTokenCreatedAt()
     {
         return $this->authTokenCreatedAt;
+    }
+
+    /**
+     * Add job
+     *
+     * @param \Owbaz\JobsBundle\Entity\Jobs $job
+     *
+     * @return User
+     */
+    public function addJob(\Owbaz\JobsBundle\Entity\Jobs $job)
+    {
+        $this->jobs[] = $job;
+
+        return $this;
+    }
+
+    /**
+     * Remove job
+     *
+     * @param \Owbaz\JobsBundle\Entity\Jobs $job
+     */
+    public function removeJob(\Owbaz\JobsBundle\Entity\Jobs $job)
+    {
+        $this->jobs->removeElement($job);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
     }
 }

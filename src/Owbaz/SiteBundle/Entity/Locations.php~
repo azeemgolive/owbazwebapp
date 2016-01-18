@@ -20,18 +20,20 @@ class Locations
      * @ORM\ManyToOne(targetEntity="Countries", inversedBy="location")
      * @ORM\JoinColumn(name="country_id", referencedColumnName="id",onDelete="CASCADE")
      */
-    
+    protected $country;
     /**
      * @ORM\OneToMany(targetEntity="Owbaz\UserBundle\Entity\User", mappedBy="location",orphanRemoval=true)
      */
-    
-     protected $country;
-
-     protected $users; 
+    protected $users; 
+    /**
+     * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="location",orphanRemoval=true)
+     */
+    protected $jobs; 
      
    public function __construct()
     {
         $this->users = new ArrayCollection();       
+        $this->jobs = new ArrayCollection();    
     }
 
     /**
@@ -193,5 +195,73 @@ class Locations
     public function removeCountry(\Owbaz\UserBundle\Entity\User $country)
     {
         $this->country->removeElement($country);
+    }
+
+    /**
+     * Add user
+     *
+     * @param \Owbaz\UserBundle\Entity\User $user
+     *
+     * @return Locations
+     */
+    public function addUser(\Owbaz\UserBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \Owbaz\UserBundle\Entity\User $user
+     */
+    public function removeUser(\Owbaz\UserBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Add job
+     *
+     * @param \Owbaz\JobsBundle\Entity\Jobs $job
+     *
+     * @return Locations
+     */
+    public function addJob(\Owbaz\JobsBundle\Entity\Jobs $job)
+    {
+        $this->jobs[] = $job;
+
+        return $this;
+    }
+
+    /**
+     * Remove job
+     *
+     * @param \Owbaz\JobsBundle\Entity\Jobs $job
+     */
+    public function removeJob(\Owbaz\JobsBundle\Entity\Jobs $job)
+    {
+        $this->jobs->removeElement($job);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
     }
 }

@@ -3,6 +3,7 @@
 namespace Owbaz\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
   * @ORM\Entity(repositoryClass="Owbaz\SiteBundle\Repository\JobsCategoriesRepository")
@@ -11,6 +12,19 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class JobsCategories
 {
+    
+    //--------------------------------------one to many relationship with locations------------------------------
+    /**
+     * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="jobcategory",orphanRemoval=true)
+    */
+    protected $jobs;    
+    
+    public function __construct()
+    {
+        $this->jobs = new ArrayCollection();       
+    }
+
+    
     /**
      * @var int
      *
@@ -153,5 +167,39 @@ class JobsCategories
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Add job
+     *
+     * @param \Owbaz\JobsBundle\Entity\Jobs $job
+     *
+     * @return JobsCategories
+     */
+    public function addJob(\Owbaz\JobsBundle\Entity\Jobs $job)
+    {
+        $this->jobs[] = $job;
+
+        return $this;
+    }
+
+    /**
+     * Remove job
+     *
+     * @param \Owbaz\JobsBundle\Entity\Jobs $job
+     */
+    public function removeJob(\Owbaz\JobsBundle\Entity\Jobs $job)
+    {
+        $this->jobs->removeElement($job);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
     }
 }

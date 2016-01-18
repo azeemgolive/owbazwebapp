@@ -13,15 +13,29 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Jobs
 {
-
-    // ...
-
     /**
-     * @ORM\ManyToOne(targetEntity="Owbaz\EmployerBundle\Entity\Employees", inversedBy="jobs")
-     * @ORM\JoinColumn(name="employer_id", referencedColumnName="employer_id",onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Owbaz\UserBundle\Entity\User", inversedBy="jobs")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id" , onDelete="CASCADE")
      */
-    protected $employer;
+    protected $users;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Countries", inversedBy="jobs")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id",onDelete="CASCADE")
+     */
+    protected $country;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Locations", inversedBy="jobs")
+     * @ORM\JoinColumn(name="location_id", referencedColumnName="id",onDelete="CASCADE")
+     */
+    protected $location;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\JobsCategories", inversedBy="jobs")
+     * @ORM\JoinColumn(name="job_categories_id", referencedColumnName="id",onDelete="CASCADE")
+     */
+    protected $jobcategory;
     /**
      * @var int
      *
@@ -58,6 +72,13 @@ class Jobs
      * @ORM\Column(name="start_date", type="datetime")
      */
     private $startDate;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="expire_date", type="datetime")
+     */
+    private $expireDate;
 
     /**
      * @var string
@@ -80,7 +101,14 @@ class Jobs
      */
     private $isActive;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="job_type", type="string", length=255)
+     */
+    private $jobType;
 
+    
     /**
      * Get id
      *
@@ -289,5 +317,125 @@ class Jobs
     public function getEmployer()
     {
         return $this->employer;
+    }
+
+    /**
+     * Set users
+     *
+     * @param \Owbaz\UserBundle\Entity\User $users
+     *
+     * @return Jobs
+     */
+    public function setUsers(\Owbaz\UserBundle\Entity\User $users = null)
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Owbaz\UserBundle\Entity\User
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \Owbaz\SiteBundle\Entity\Countries $country
+     *
+     * @return Jobs
+     */
+    public function setCountry(\Owbaz\SiteBundle\Entity\Countries $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \Owbaz\SiteBundle\Entity\Countries
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set location
+     *
+     * @param \Owbaz\SiteBundle\Entity\Locations $location
+     *
+     * @return Jobs
+     */
+    public function setLocation(\Owbaz\SiteBundle\Entity\Locations $location = null)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return \Owbaz\SiteBundle\Entity\Locations
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set jobcategory
+     *
+     * @param \Owbaz\SiteBundle\Entity\JobsCategories $jobcategory
+     *
+     * @return Jobs
+     */
+    public function setJobcategory(\Owbaz\SiteBundle\Entity\JobsCategories $jobcategory = null)
+    {
+        $this->jobcategory = $jobcategory;
+
+        return $this;
+    }
+
+    /**
+     * Get jobcategory
+     *
+     * @return \Owbaz\SiteBundle\Entity\JobsCategories
+     */
+    public function getJobcategory()
+    {
+        return $this->jobcategory;
+    }
+
+    /**
+     * Set expireDate
+     *
+     * @param \DateTime $expireDate
+     *
+     * @return Jobs
+     */
+    public function setExpireDate($expireDate)
+    {
+        $this->expireDate = $expireDate;
+
+        return $this;
+    }
+
+    /**
+     * Get expireDate
+     *
+     * @return \DateTime
+     */
+    public function getExpireDate()
+    {
+        return $this->expireDate;
     }
 }
