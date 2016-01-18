@@ -881,4 +881,52 @@ class User
     {
         return $this->jobs;
     }
+    
+    public function getAbsolutePath()
+    {
+        return null === $this->user_image
+            ? null
+            : $this->getUploadRootDir().'/'.$this->user_image;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->user_image
+            ? null
+            : $this->getUploadDir().'/'.$this->user_image;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/owbaz/userimages';
+    }
+    
+    public function getCompanyAbsolutePath()
+    {
+        return null === $this->company_logo
+            ? null
+            : $this->getCompanyUploadRootDir().'/'.$this->company_logo;
+    }
+
+    public function getCompanyWebPath()
+    {
+        return null === $this->company_logo
+            ? null
+            : $this->getCompanyUploadDir().'/'.$this->company_logo;
+    }
+
+    protected function getCompanyUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getCompanyUploadDir();
+    }
+
+    protected function getCompanyUploadDir()
+    {
+        return 'uploads/owbaz/companyimages';
+    }
 }

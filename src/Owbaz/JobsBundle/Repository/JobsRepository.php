@@ -10,4 +10,14 @@ namespace Owbaz\JobsBundle\Repository;
  */
 class JobsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAllJobs()
+    {
+       $total_record = $this->getEntityManager()
+                ->createQuery('SELECT j FROM OwbazJobsBundle:Jobs j');
+        try {
+            return $total_record->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
 }

@@ -3,11 +3,14 @@
 namespace Owbaz\JobsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Owbaz\JobsBundle\Entity\Jobs;
 
 class JobsController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('OwbazJobsBundle:Default:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('OwbazJobsBundle:Jobs')->getAllJobs();
+        return $this->render('OwbazJobsBundle:Jobs:index.html.twig',array('jobs'=>$entity));
     }
 }

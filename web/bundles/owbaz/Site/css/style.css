@@ -246,3 +246,12 @@ footer ul.navsocial li+li+li:hover a { color:#C0392B}
 .modal-footer {
 	border-top: 0px;
 }
+
+#jobListing .job_position {
+    width: 80%;
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-top: 10px;
+}
