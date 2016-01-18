@@ -5,9 +5,7 @@ namespace Owbaz\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * IndustryType
- *
- * @ORM\Table(name="industry_type")
+ * @ORM\Table(name="jobsite_industrytype")
  * @ORM\Entity(repositoryClass="Owbaz\SiteBundle\Repository\IndustryTypeRepository")
  */
 class IndustryType
