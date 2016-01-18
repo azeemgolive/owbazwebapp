@@ -24,9 +24,13 @@
                              data-cycle-fx=carousel
                              data-cycle-timeout=3000
                              data-cycle-carousel-visible=2
-                             data-cycle-carousel-vertical=true
-                        > <img src="{{ asset('bundles/owbaz/Site/images/clients/logo-11.png') }}" width="300" height="150" alt="" /> <img src="{{ asset('bundles/owbaz/Site/images/clients/logo-22.png') }}" width="300" height="150" alt="" /> <img src="{{ asset('bundles/owbaz/Site/images/clients/logo-33.png') }}" width="300" height="150" alt="" /> <img src="{{ asset('bundles/owbaz/Site/images/clients/logo-44.png') }}" width="300" height="150" alt="" /> <img src="{{ asset('bundles/owbaz/Site/images/clients/logo-55.png') }}" width="300" height="150" alt="" /> </div>
-                        <!--<img src="images/logoclients.png" width="490" height="473" alt=""  class="wow rollIn" data-wow-duration="1s" data-wow-delay="1s" /> --></div>
+                             data-cycle-carousel-vertical=true> 
+                            {% for c in clients%}
+                                <img src="{{ asset(c.WebPath) }}" width="300" height="150" alt=""/>
+                                  {%endfor%}
+                            </div>
+                          
+                            <!--<img src="images/logoclients.png" width="490" height="473" alt=""  class="wow rollIn" data-wow-duration="1s" data-wow-delay="1s" /> --></div>
                 </div>
                 <!---   /Clients ------------->
 

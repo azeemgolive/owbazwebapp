@@ -10,4 +10,15 @@ namespace Owbaz\SiteBundle\Repository;
  */
 class ClientsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAllClients()
+    {
+         $total_record = $this->getEntityManager()
+                ->createQuery('SELECT b FROM OwbazSiteBundle:Clients b');
+        try {
+            return $total_record->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+            
 }

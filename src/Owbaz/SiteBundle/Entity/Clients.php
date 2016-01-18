@@ -53,6 +53,11 @@ class Clients
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
+    
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $imageurl;
 
 
     /**
@@ -183,6 +188,54 @@ class Clients
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+    
+    /**
+     * Set imageurl
+     *
+     * @param string $imageurl
+     * @return Product
+     */
+    public function setImageurl($imageurl)
+    {
+        $this->imageurl = $imageurl;
+    
+        return $this;
+    }
+
+    /**
+     * Get imageurl
+     *
+     * @return string 
+     */
+    public function getImageurl()
+    {
+        return $this->clientImage;
+    }
+    
+    
+    public function getAbsolutePath()
+    {
+        return null === $this->clientImage
+            ? null
+            : $this->getUploadRootDir().'/'.$this->clientImage;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->clientImage
+            ? null
+            : $this->getUploadDir().'/'.$this->clientImage;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/owbaz/clients';
     }
 }
 
