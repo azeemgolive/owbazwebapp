@@ -68,20 +68,21 @@
                     }
                 </script>
                 <div id="apply-job">
-                    <form class="no-margin" action="loginaction.php" method="post" onsubmit="return ValidateLoginForm(this)">
+                    <form class="no-margin" action="{{ path('owbaz_users_login_check') }}" method="post" onsubmit="return ValidateLoginForm(this)">
 
 
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-4 control-label">Email:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="Email" name="Email" autocomplete="off"/>
+
+                                <input type="text" class="form-control" name="email" id="email" placeholder="Email">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-4 upper_gap control-label">Password:</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="password" name="Password" id="inputPassword3" placeholder="Password" autocomplete="off" />
+                                <input class="form-control" type="password" name="password" id="password" placeholder="Password">
                             </div>
                         </div>
 

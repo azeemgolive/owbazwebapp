@@ -1,5 +1,5 @@
 owbaz_new_employer:
-    pattern:  /users/employees/new
+    pattern:  /employees/register
     defaults: { _controller: OwbazUserBundle:User:NewEmployer }
 
 owbaz_user_employees_create:

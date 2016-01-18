@@ -13,6 +13,12 @@ class EmployerType extends AbstractType
         $builder->add('email');
         $builder->add('password','password');
         $builder->add('company_name');
+        $builder ->add('industry_type', 'entity', array(
+            'class' => 'OwbazSiteBundle:IndustryType',
+            'expanded' => false,
+            'multiple' => false,
+            'property' => 'industryName',
+        ));
         $builder->add('contact_person');
         $builder->add('user_type','hidden',array('data' => 'employer'));
         $builder->add('company_description');

@@ -1,3 +1,7 @@
 owbaz_site_homepage:
     path:     /
     defaults: { _controller: OwbazSiteBundle:Site:index }
+
+owbaz_register_link:
+    pattern:  /register
+    defaults: { _controller: OwbazSiteBundle:Site:register }

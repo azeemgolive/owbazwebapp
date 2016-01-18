@@ -1,5 +1,5 @@
-owbaz_user_employees_new:
-    pattern:  /users/jobseeker/new
+owbaz_user_jobseeker_new:
+    pattern:  /jobseeker/new
     defaults: { _controller: OwbazUserBundle:User:newJobseeker }
 
 users_jobseekers_create:

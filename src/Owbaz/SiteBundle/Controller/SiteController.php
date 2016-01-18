@@ -21,4 +21,9 @@ class SiteController extends Controller
         return $this->render('OwbazUserBundle:Employers:new.html.twig', array(
             'clients' =>$clients));
     }
+
+    public function registerAction()
+    {
+        return $this->render('OwbazSiteBundle:Home:register.html.twig');
+    }
 }

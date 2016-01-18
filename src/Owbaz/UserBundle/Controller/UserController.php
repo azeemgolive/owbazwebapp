@@ -12,18 +12,18 @@ use Owbaz\UserBundle\Form\Type\EmployerType;
 
 class UserController extends Controller
 {
-    
+
     public function indexAction()
     {
         return $this->render('OwbazUserBundle:Default:index.html.twig');
     }
-    
+
     //-------------------------------add new employer Form------------------------------------------------
     public function NewEmployerAction()
     {
-            $entity = new User();
-            $form = $this->createForm(new EmployerType(), $entity);
-        return $this->render('OwbazUserBundle:Employers:new.html.twig', array(
+        $entity = new User();
+        $form = $this->createForm(new EmployerType(), $entity);
+        return $this->render('OwbazUserBundle:Employers:employer_register.html.twig', array(
             'form' => $form->createView()));
 
     }
@@ -48,14 +48,14 @@ class UserController extends Controller
     {
         $entity = new User();
         $form = $this->createForm(new JobseekerType(), $entity);
-        return $this->render('OwbazUserBundle:Jobseekers:new.html.twig', array(
-                    'form' => $form->createView()));
+        return $this->render('OwbazUserBundle:Jobseekers:jobseeker_register.html.twig', array(
+            'form' => $form->createView()));
     }
     //-------------------------------create new jobseeker------------------------------------------------
     public function createJobseekerAction(Request $request)
     {
-          $entity = new User();
-          $form = $this->createForm(new JobseekerType(), $entity);
+        $entity = new User();
+        $form = $this->createForm(new JobseekerType(), $entity);
         $form->bind($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -83,13 +83,13 @@ class UserController extends Controller
         if($entity)
         {
 
-           if($entity->user_type=="jobseeker")
-           {
-               return $this->redirect($this->generateUrl('owbaz_jobseeker_dashboard'));
-           }else
-           {
-               return $this->redirect($this->generateUrl('owbaz_employer_dashboard'));
-           }
+            if($entity->user_type=="jobseeker")
+            {
+                return $this->redirect($this->generateUrl('owbaz_jobseeker_dashboard'));
+            }else
+            {
+                return $this->redirect($this->generateUrl('owbaz_employer_dashboard'));
+            }
 
             //$user_name =  $session->set('name', 'Rahul');
 
@@ -121,5 +121,5 @@ class UserController extends Controller
         return $this->createForm(new JobseekerType(), $entity);
     }
 
-    
+
 }

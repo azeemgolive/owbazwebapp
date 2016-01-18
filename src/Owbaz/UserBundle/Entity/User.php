@@ -76,6 +76,13 @@ class User
     /**
      * @var string
      *
+     * @ORM\Column(name="industry_type", type="string", length=255,nullable=true)
+     */
+    private $industry_type;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="phone_number", type="string", length=255,nullable=true)
      */
     private $phone_number;
@@ -839,6 +846,30 @@ class User
     }
 
     /**
+     * Set industryType
+     *
+     * @param string $industryType
+     *
+     * @return User
+     */
+    public function setIndustryType($industryType)
+    {
+        $this->industry_type = $industryType;
+
+        return $this;
+    }
+
+    /**
+     * Get industryType
+     *
+     * @return string
+     */
+    public function getIndustryType()
+    {
+        return $this->industry_type;
+    }
+
+    /**
      * Get authTokenCreatedAt
      *
      * @return \DateTime
@@ -847,6 +878,8 @@ class User
     {
         return $this->authTokenCreatedAt;
     }
+
+
 
     /**
      * Add job
