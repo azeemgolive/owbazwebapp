@@ -1,0 +1,144 @@
+users:
+  jobseekers_one:
+    id: 1
+    first_name: jobseeker
+    last_name:  demo
+    email: jobseeker@demo.com
+    password: demo
+    gender: male
+    user_type: jobseeker 
+    
+  jobseekers_two:
+    id: 2
+    first_name: rahul
+    last_name:  dembani
+    email: rahuldembani@gmail.com
+    password: 123456
+    gender: male
+    user_type: jobseeker
+    
+  jobseekers_four:
+    id: 3
+    first_name: Habibullah
+    last_name:  khan
+    email: habibullah@gmail.com
+    password: 123456
+    gender: male
+    user_type: jobseeker  
+    
+  jobseekers_five:
+    id: 4
+    first_name: haseeb
+    last_name:  ahmed
+    email: haseeb@gmail.com
+    password: 123456
+    gender: male
+    user_type: jobseeker   
+    
+  jobseekers_six:
+    id: 5
+    first_name: zaidham
+    last_name:  ali
+    email: zaigham@gmail.com
+    password: 123456
+    gender: male
+    user_type: jobseeker 
+    
+  jobseekers_six:
+    id: 6
+    first_name: zaigham
+    last_name:  ali
+    email: zaigham@gmail.com
+    password: 123456  
+    gender: male
+    user_type: jobseeker 
+    
+  jobseekers_seven:
+    id: 7
+    first_name: muhammad
+    last_name:  talib
+    email: talib@gmail.com
+    password: 123456
+    gender: male
+    user_type: jobseeker  
+    
+  jobseekers_eight:
+    id: 8
+    first_name: abdul
+    last_name:  ahad
+    email: aahad@gmail.com
+    password: 123456
+    gender: male   
+    user_type: jobseeker   
+    
+  jobseekers_nine:
+    id: 9
+    first_name: salman
+    last_name:  zahid
+    email: salman@gmail.com
+    password: 123456
+    gender: male   
+    user_type: employer    
+  
+  jobseekers_ten:
+    id: 10
+    first_name: hasham
+    last_name:  hussain
+    email: hasham@gmail.com
+    password: 123456
+    gender: male   
+    user_type: employer 
+ 
+  jobseekers_eleven:
+    id: 11
+    first_name: waqas
+    last_name:  ramzan
+    email: waqas@gmail.com
+    password: 123456
+    gender: male   
+    user_type: employer   
+    
+  jobseekers_tweleve:
+    id: 12
+    first_name: raheel
+    last_name:  aslam
+    email: raheel@gmail.com
+    password: 123456
+    gender: male   
+    user_type: employer
+  
+  jobseekers_thirteen:
+    id: 13
+    first_name: saher
+    last_name:  najam
+    email: sajer@gmail.com
+    password: 123456
+    gender: male   
+    user_type: employer 
+    
+  jobseekers_fourteen:
+    id: 14
+    first_name: shiraz
+    last_name:  lakhani
+    email: shiraz@gmail.com
+    password: 123456
+    gender: male   
+    user_type: employer
+    
+  jobseekers_fifteen:
+    id: 15
+    first_name: rida
+    last_name:  jamal
+    email: rida@gmail.com
+    password: 123456
+    gender: male   
+    user_type: employer   
+    
+  jobseekers_sixteen:
+    id: 16
+    first_name: demo
+    last_name:  employer
+    email: employer@demo.com
+    password: demo
+    gender: male   
+    user_type: employer    
