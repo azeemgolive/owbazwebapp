@@ -14,7 +14,7 @@ class EmployerType extends AbstractType
         $builder->add('password','password');
         $builder->add('company_name');
         $builder ->add('industry_type', 'entity', array(
-            'class' => 'OwbazSiteBundle:IndustryType',
+            'class' => 'OwbazSiteBundle:Industries',
             'expanded' => false,
             'multiple' => false,
             'property' => 'industryName',
