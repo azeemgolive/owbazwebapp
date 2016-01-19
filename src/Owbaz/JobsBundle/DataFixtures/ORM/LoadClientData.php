@@ -35,7 +35,7 @@ class LoadClientData implements FixtureInterface {
         $fixtures = Yaml::parse(file_get_contents($fixturesPath . '/clients.yml'));
         $destination = realpath(dirname(__FILE__) . '/../../../../../web/uploads/owbaz/clients');
         $source = realpath(dirname(__FILE__) . '/../../../../../web/bundles/owbaz/miscellaneous/fixtures/clients');
-        $this->deleteAllClientsFiles($destination);
+        // $this->deleteAllClientsFiles($destination);
         foreach ($fixtures['clients'] as $key => $value) {
             $image = $value;
             $imagename = implode(",", $image);
@@ -47,9 +47,9 @@ class LoadClientData implements FixtureInterface {
             $manager->persist($brand);
             $manager->flush();
         }
-        $this->copyAllClientsImageFiles($source, $destination, $options = array('folderPermission' => 0755, 'filePermission' => 0755));
+        // $this->copyAllClientsImageFiles($source, $destination, $options = array('folderPermission' => 0755, 'filePermission' => 0755));
     }
-
+/*
     public function deleteAllClientsFiles($path) {
         $debugStr = '';
         if ($handle = opendir($path)) {
@@ -133,7 +133,7 @@ class LoadClientData implements FixtureInterface {
 
     
 
-    
+    */
 
     /**
      * {@inheritDoc}
