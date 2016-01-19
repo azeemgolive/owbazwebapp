@@ -46,29 +46,23 @@ class Locations
     /**
      * @var string
      *
-     * @ORM\Column(name="location_name", type="string", length=255)
+     * @ORM\Column(name="area_name", type="string", length=255)
      */
-    private $locationName;
+    private $area_name;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="area_code", type="string", length=255)
      */
-    private $createdAt;
+    private $area_code;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updatedAt", type="datetime")
-     */
-    private $updatedAt;
-
+    
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -76,75 +70,51 @@ class Locations
     }
 
     /**
-     * Set locationName
+     * Set areaName
      *
-     * @param string $locationName
+     * @param string $areaName
      *
      * @return Locations
      */
-    public function setLocationName($locationName)
+    public function setAreaName($areaName)
     {
-        $this->locationName = $locationName;
+        $this->area_name = $areaName;
 
         return $this;
     }
 
     /**
-     * Get locationName
+     * Get areaName
      *
      * @return string
      */
-    public function getLocationName()
+    public function getAreaName()
     {
-        return $this->locationName;
+        return $this->area_name;
     }
 
     /**
-     * Set createdAt
+     * Set areaCode
      *
-     * @param \DateTime $createdAt
+     * @param string $areaCode
      *
      * @return Locations
      */
-    public function setCreatedAt($createdAt)
+    public function setAreaCode($areaCode)
     {
-        $this->createdAt = $createdAt;
+        $this->area_code = $areaCode;
 
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get areaCode
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getCreatedAt()
+    public function getAreaCode()
     {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Locations
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
+        return $this->area_code;
     }
 
     /**
@@ -169,30 +139,6 @@ class Locations
     public function getCountry()
     {
         return $this->country;
-    }
-
-    /**
-     * Add country
-     *
-     * @param \Owbaz\UserBundle\Entity\User $country
-     *
-     * @return Locations
-     */
-    public function addCountry(\Owbaz\UserBundle\Entity\User $country)
-    {
-        $this->country[] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Remove country
-     *
-     * @param \Owbaz\UserBundle\Entity\User $country
-     */
-    public function removeCountry(\Owbaz\UserBundle\Entity\User $country)
-    {
-        $this->country->removeElement($country);
     }
 
     /**
