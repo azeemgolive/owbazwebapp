@@ -36,6 +36,9 @@ class Jobs
      * @ORM\JoinColumn(name="job_categories_id", referencedColumnName="id",onDelete="CASCADE")
      */
     protected $jobcategory;
+    
+    
+   
     /**
      * @var int
      *
@@ -438,6 +441,8 @@ class Jobs
     {
         return $this->expireDate;
     }
+
+    
 
     /**
      * Set jobType

@@ -33,7 +33,7 @@ class Countries
     {
         $this->location = new ArrayCollection();
         $this->users = new ArrayCollection();
-        $this->users = new ArrayCollection();
+        $this->jobs = new ArrayCollection();
     }
 
 

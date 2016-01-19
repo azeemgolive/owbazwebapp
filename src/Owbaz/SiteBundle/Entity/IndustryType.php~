@@ -11,6 +11,18 @@ use Doctrine\ORM\Mapping as ORM;
 class IndustryType
 {
     /**
+     * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="industry",orphanRemoval=true)
+     */
+    protected $jobs;
+    
+    
+    
+    public function __construct()
+    {
+       
+        $this->jobs = new ArrayCollection();
+    }
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")

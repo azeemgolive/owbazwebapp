@@ -25,6 +25,14 @@ class User
      */
       protected $location;
       
+      
+      //-----------------------one to many relationship with industry-----------------------------------------
+    /**
+     * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Industries", inversedBy="users")
+     * @ORM\JoinColumn(name="industry_id", referencedColumnName="id",onDelete="CASCADE")
+     */
+      protected $industry;
+      
     /**
      * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="users",orphanRemoval=true)
      */
@@ -961,5 +969,29 @@ class User
     protected function getCompanyUploadDir()
     {
         return 'uploads/owbaz/companyimages';
+    }
+
+    /**
+     * Set industry
+     *
+     * @param \Owbaz\SiteBundle\Entity\Industries $industry
+     *
+     * @return User
+     */
+    public function setIndustry(\Owbaz\SiteBundle\Entity\Industries $industry = null)
+    {
+        $this->industry = $industry;
+
+        return $this;
+    }
+
+    /**
+     * Get industry
+     *
+     * @return \Owbaz\SiteBundle\Entity\Industries
+     */
+    public function getIndustry()
+    {
+        return $this->industry;
     }
 }

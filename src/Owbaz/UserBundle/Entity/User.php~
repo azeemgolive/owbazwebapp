@@ -25,6 +25,14 @@ class User
      */
       protected $location;
       
+      
+      //-----------------------one to many relationship with industry-----------------------------------------
+    /**
+     * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Industries", inversedBy="users")
+     * @ORM\JoinColumn(name="industry_id", referencedColumnName="id",onDelete="CASCADE")
+     */
+      protected $industry;
+      
     /**
      * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="users",orphanRemoval=true)
      */
@@ -72,6 +80,13 @@ class User
      * @ORM\Column(name="password", type="string", length=255,nullable=true)
      */
     private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="industry_type", type="string", length=255,nullable=true)
+     */
+    private $industry_type;
 
     /**
      * @var string
@@ -839,6 +854,30 @@ class User
     }
 
     /**
+     * Set industryType
+     *
+     * @param string $industryType
+     *
+     * @return User
+     */
+    public function setIndustryType($industryType)
+    {
+        $this->industry_type = $industryType;
+
+        return $this;
+    }
+
+    /**
+     * Get industryType
+     *
+     * @return string
+     */
+    public function getIndustryType()
+    {
+        return $this->industry_type;
+    }
+
+    /**
      * Get authTokenCreatedAt
      *
      * @return \DateTime
@@ -847,6 +886,8 @@ class User
     {
         return $this->authTokenCreatedAt;
     }
+
+
 
     /**
      * Add job
@@ -880,5 +921,53 @@ class User
     public function getJobs()
     {
         return $this->jobs;
+    }
+    
+    public function getAbsolutePath()
+    {
+        return null === $this->user_image
+            ? null
+            : $this->getUploadRootDir().'/'.$this->user_image;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->user_image
+            ? null
+            : $this->getUploadDir().'/'.$this->user_image;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/owbaz/userimages';
+    }
+    
+    public function getCompanyAbsolutePath()
+    {
+        return null === $this->company_logo
+            ? null
+            : $this->getCompanyUploadRootDir().'/'.$this->company_logo;
+    }
+
+    public function getCompanyWebPath()
+    {
+        return null === $this->company_logo
+            ? null
+            : $this->getCompanyUploadDir().'/'.$this->company_logo;
+    }
+
+    protected function getCompanyUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getCompanyUploadDir();
+    }
+
+    protected function getCompanyUploadDir()
+    {
+        return 'uploads/owbaz/companyimages';
     }
 }
