@@ -20,3 +20,14 @@ nbproject/private/private.xml
 .idea/workspace.xml
 .idea/workspace.xml
 .idea/workspace.xml
+web/bundles/owbaz/Site/css/animate.css
+*.css
+web/bundles/owbaz/Site/css/animate.css
+*.css
+web/bundles/owbaz/Site/css/bootstrap-theme.min.css
+*.css
+web/bundles/owbaz/Site/css/bootstrap.min.css
+*.svg
+web/bundles/owbaz/Site/js/bootstrap.js
+web/bundles/owbaz/Site/js/npm.js
+*.js
