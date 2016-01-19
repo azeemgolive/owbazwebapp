@@ -107,4 +107,38 @@ class Industries
     {
         return $this->jobs;
     }
+
+    /**
+     * Add user
+     *
+     * @param \Owbaz\UserBundle\Entity\User $user
+     *
+     * @return Industries
+     */
+    public function addUser(\Owbaz\UserBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \Owbaz\UserBundle\Entity\User $user
+     */
+    public function removeUser(\Owbaz\UserBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
 }

@@ -443,4 +443,28 @@ class Jobs
     }
 
     
+
+    /**
+     * Set jobType
+     *
+     * @param string $jobType
+     *
+     * @return Jobs
+     */
+    public function setJobType($jobType)
+    {
+        $this->jobType = $jobType;
+
+        return $this;
+    }
+
+    /**
+     * Get jobType
+     *
+     * @return string
+     */
+    public function getJobType()
+    {
+        return $this->jobType;
+    }
 }

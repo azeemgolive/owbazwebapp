@@ -1,0 +1,12 @@
+clients:
+  aris: 
+    image: 'aris.png'
+  envision:
+    image: 'envision.png'
+  Moti wala:
+    image: 'moti_wala.png'
+  Next idea:
+    image: 'next_idea.png'
+  Uhuru town:
+    image: 'uhuru_town.png'
+  

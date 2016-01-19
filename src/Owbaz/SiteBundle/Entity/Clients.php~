@@ -36,7 +36,7 @@ class Clients
     /**
      * @var string
      *
-     * @ORM\Column(name="client_description", type="string", length=255)
+     * @ORM\Column(name="client_description", type="string", length=255,nullable=true)
      */
     private $clientDescription;
 
@@ -54,11 +54,7 @@ class Clients
      */
     private $updatedAt;
     
-    /**
-     * @ORM\Column(type="text")
-     */
-    protected $imageurl;
-
+    
 
     /**
      * Get id
@@ -188,30 +184,7 @@ class Clients
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-    
-    /**
-     * Set imageurl
-     *
-     * @param string $imageurl
-     * @return Product
-     */
-    public function setImageurl($imageurl)
-    {
-        $this->imageurl = $imageurl;
-    
-        return $this;
-    }
-
-    /**
-     * Get imageurl
-     *
-     * @return string 
-     */
-    public function getImageurl()
-    {
-        return $this->clientImage;
-    }
+    }  
     
     
     public function getAbsolutePath()

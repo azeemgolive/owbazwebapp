@@ -6,10 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Locations
- *
- * @ORM\Table(name="locations")
  * @ORM\Entity(repositoryClass="Owbaz\SiteBundle\Repository\LocationsRepository")
+ * @ORM\Table(name="jobsite_locations")
  */
 class Locations
 {

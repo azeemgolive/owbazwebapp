@@ -970,4 +970,28 @@ class User
     {
         return 'uploads/owbaz/companyimages';
     }
+
+    /**
+     * Set industry
+     *
+     * @param \Owbaz\SiteBundle\Entity\Industries $industry
+     *
+     * @return User
+     */
+    public function setIndustry(\Owbaz\SiteBundle\Entity\Industries $industry = null)
+    {
+        $this->industry = $industry;
+
+        return $this;
+    }
+
+    /**
+     * Get industry
+     *
+     * @return \Owbaz\SiteBundle\Entity\Industries
+     */
+    public function getIndustry()
+    {
+        return $this->industry;
+    }
 }
