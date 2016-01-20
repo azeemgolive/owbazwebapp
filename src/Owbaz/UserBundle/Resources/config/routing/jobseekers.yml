@@ -3,7 +3,7 @@ owbaz_user_jobseeker_new:
     defaults: { _controller: OwbazUserBundle:User:newJobseeker }
 
 users_jobseekers_create:
-    pattern:  /users/jobseeker/create
+    pattern:  /jobseeker/create
     defaults: { _controller: OwbazUserBundle:User:createJobseeker }
 
 owbaz_jobseeker_dashboard:

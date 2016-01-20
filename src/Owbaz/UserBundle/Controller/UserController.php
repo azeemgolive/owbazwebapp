@@ -40,8 +40,17 @@ class UserController extends Controller
             $entity->setUpdatedAt(new \DateTime('now'));
             $em->persist($entity);
             $em->flush();
+
+            return $this->render('OwbazUserBundle:Employers:thanks.html.twig');
+        }else
+        {
+            $this->addFlash(
+                'error',
+                'Password Does Not Match'
+            );
+            return $this->redirect($this->generateUrl('owbaz_new_employer'));
         }
-        return $this->render('OwbazUserBundle:Employers:thanks.html.twig');
+
     }
     //-------------------------------add new jobseeker Form------------------------------------------------
     public function newJobseekerAction()

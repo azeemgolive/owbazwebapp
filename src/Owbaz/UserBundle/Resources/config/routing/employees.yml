@@ -3,7 +3,7 @@ owbaz_new_employer:
     defaults: { _controller: OwbazUserBundle:User:NewEmployer }
 
 owbaz_user_employees_create:
-    pattern:  /users/employees/create
+    pattern:  /employees/create
     defaults: { _controller: OwbazUserBundle:User:createEmployer }
 
 owbaz_employer_dashboard:
