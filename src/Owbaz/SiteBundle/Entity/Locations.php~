@@ -6,8 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
+ * @ORM\Entity
  * @ORM\Entity(repositoryClass="Owbaz\SiteBundle\Repository\LocationsRepository")
  * @ORM\Table(name="jobsite_locations")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Locations
 {
@@ -58,4 +60,154 @@ class Locations
     private $area_code;
 
     
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set areaName
+     *
+     * @param string $areaName
+     *
+     * @return Locations
+     */
+    public function setAreaName($areaName)
+    {
+        $this->area_name = $areaName;
+
+        return $this;
+    }
+
+    /**
+     * Get areaName
+     *
+     * @return string
+     */
+    public function getAreaName()
+    {
+        return $this->area_name;
+    }
+
+    /**
+     * Set areaCode
+     *
+     * @param string $areaCode
+     *
+     * @return Locations
+     */
+    public function setAreaCode($areaCode)
+    {
+        $this->area_code = $areaCode;
+
+        return $this;
+    }
+
+    /**
+     * Get areaCode
+     *
+     * @return string
+     */
+    public function getAreaCode()
+    {
+        return $this->area_code;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \Owbaz\SiteBundle\Entity\Countries $country
+     *
+     * @return Locations
+     */
+    public function setCountry(\Owbaz\SiteBundle\Entity\Countries $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \Owbaz\SiteBundle\Entity\Countries
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \Owbaz\UserBundle\Entity\User $user
+     *
+     * @return Locations
+     */
+    public function addUser(\Owbaz\UserBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \Owbaz\UserBundle\Entity\User $user
+     */
+    public function removeUser(\Owbaz\UserBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Add job
+     *
+     * @param \Owbaz\JobsBundle\Entity\Jobs $job
+     *
+     * @return Locations
+     */
+    public function addJob(\Owbaz\JobsBundle\Entity\Jobs $job)
+    {
+        $this->jobs[] = $job;
+
+        return $this;
+    }
+
+    /**
+     * Remove job
+     *
+     * @param \Owbaz\JobsBundle\Entity\Jobs $job
+     */
+    public function removeJob(\Owbaz\JobsBundle\Entity\Jobs $job)
+    {
+        $this->jobs->removeElement($job);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
+    }
 }

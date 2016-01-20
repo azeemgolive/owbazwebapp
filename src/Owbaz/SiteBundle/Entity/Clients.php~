@@ -5,8 +5,10 @@ namespace Owbaz\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\Entity
  * @ORM\Entity(repositoryClass="Owbaz\SiteBundle\Repository\ClientsRepository")
  * @ORM\Table(name="jobsite_clients")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Clients
 {

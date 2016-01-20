@@ -5,8 +5,10 @@ namespace Owbaz\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
+ * @ORM\Entity
  * @ORM\Entity(repositoryClass="Owbaz\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="jobsite_users")
+ * @ORM\HasLifecycleCallbacks()
  */
 class User
 {
@@ -37,6 +39,12 @@ class User
      * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="users",orphanRemoval=true)
      */
     protected $jobs;  
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Nationality", inversedBy="users")
+     * @ORM\JoinColumn(name="nationality_id", referencedColumnName="id",onDelete="CASCADE")
+     */    
+     protected $nationality;
     
       
     public function __construct()
@@ -993,5 +1001,29 @@ class User
     public function getIndustry()
     {
         return $this->industry;
+    }
+
+    /**
+     * Set nationality
+     *
+     * @param \Owbaz\SiteBundle\Entity\Nationality $nationality
+     *
+     * @return User
+     */
+    public function setNationality(\Owbaz\SiteBundle\Entity\Nationality $nationality = null)
+    {
+        $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    /**
+     * Get nationality
+     *
+     * @return \Owbaz\SiteBundle\Entity\Nationality
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
     }
 }
