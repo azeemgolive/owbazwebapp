@@ -6,8 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /** 
+ * @ORM\Entity
  * @ORM\Entity(repositoryClass="Owbaz\SiteBundle\Repository\CountriesRepository")
  * @ORM\Table(name="jobsite_countries")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Countries
 {
