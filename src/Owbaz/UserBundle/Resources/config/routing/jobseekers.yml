@@ -7,5 +7,5 @@ users_jobseekers_create:
     defaults: { _controller: OwbazUserBundle:User:createJobseeker }
 
 owbaz_jobseeker_dashboard:
-    pattern:  jobseeker/dashboard
-    defaults: { _controller: OwbazUserBundle:User:jobseekerdashboard }
+    pattern:  jobseeker/dashboard/{user_id}
+    defaults: { _controller: OwbazUserBundle:User:jobseekerDashboard }

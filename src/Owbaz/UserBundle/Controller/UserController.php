@@ -91,44 +91,44 @@ class UserController extends Controller
         //return new Response($em);
         if($entity)
         {
-
             if($entity->user_type=="jobseeker")
             {
-                return $this->redirect($this->generateUrl('owbaz_jobseeker_dashboard'));
+                return $this->redirect($this->generateUrl('owbaz_jobseeker_dashboard',array('user_id' => $entity->getId())));
             }else
             {
                 return $this->redirect($this->generateUrl('owbaz_employer_dashboard'));
             }
-
-            //$user_name =  $session->set('name', 'Rahul');
-
-
             return $this->redirect($this->generateUrl('owbaz_users_dashboard')); // redirect change url of the page
-            //  return  $this->render('TalhaBundkhaAdminBundle:Admin:dashboard.html.twig');  render page
-        }else
-        {
+           }else
+           {
             $this->addFlash(
                 'error',
                 'Invalid User Name And Password'
             );
             return $this->redirect($this->generateUrl('owbaz_users_login'));
-
-        }
+           }
     }
 
     public function employerdashboardAction()
     {
         return $this->render('OwbazUserBundle:Employers:dashboard.html.twig');
     }
-    public function jobseekerdashboardAction()
+    public function jobseekerDashboardAction($user_id)
     {
-        return $this->render('OwbazUserBundle:Jobseekers:dashboard.html.twig');
+        $entity=  $this->getJobseeker($user_id);
+        return $this->render('OwbazUserBundle:Jobseekers:dashboard.html.twig',array('jobseeker'=>$entity));
     }
     //---------------------------------------------------------------------
 
     private function getEditForm($entity) {
         return $this->createForm(new JobseekerType(), $entity);
     }
-
+   
+    //------------------------------------------------------------------------
+    private function getJobseeker($id) {
+        return $this->getDoctrine()
+                        ->getRepository('OwbazUserBundle:User')
+                        ->find($id);
+    }
 
 }
