@@ -96,7 +96,9 @@ class UserController extends Controller
                 return $this->redirect($this->generateUrl('owbaz_jobseeker_dashboard',array('user_id' => $entity->getId())));
             }else
             {
-                return $this->redirect($this->generateUrl('owbaz_employer_dashboard'));
+                return $this->redirect($this->generateUrl('owbaz_employer_dashboard',array(
+                    'user_id' => $entity->getId()
+                )));
             }
             return $this->redirect($this->generateUrl('owbaz_users_dashboard')); // redirect change url of the page
            }else
@@ -109,9 +111,10 @@ class UserController extends Controller
            }
     }
 
-    public function employerdashboardAction()
+    public function employerDashboardAction($user_id)
     {
-        return $this->render('OwbazUserBundle:Employers:dashboard.html.twig');
+        $entity=  $this->getEmployer($user_id);
+        return $this->render('OwbazUserBundle:Employers:dashboard.html.twig',array('employer'=>$entity));
     }
     public function jobseekerDashboardAction($user_id)
     {
@@ -129,6 +132,13 @@ class UserController extends Controller
         return $this->getDoctrine()
                         ->getRepository('OwbazUserBundle:User')
                         ->find($id);
+    }
+
+    //------------------------------------------------------------------------
+    private function getEmployer($id) {
+        return $this->getDoctrine()
+            ->getRepository('OwbazUserBundle:User')
+            ->find($id);
     }
 
 }
