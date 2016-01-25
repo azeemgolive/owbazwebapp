@@ -9,3 +9,40 @@ users_jobseekers_create:
 owbaz_jobseeker_dashboard:
     pattern:  jobseeker/dashboard/{user_id}
     defaults: { _controller: OwbazUserBundle:User:jobseekerDashboard }
+
+owbaz_jobseeker_profile_edit:
+    pattern:  jobseeker/profile/edit/{user_id}
+    defaults: { _controller: OwbazJobseekerBundle:Jobseeker:editJobseeker }
+    
+owbaz_jobseeker_profile_update:
+    pattern:  jobseeker/profile/update/{user_id}
+    defaults: { _controller: OwbazJobseekerBundle:Jobseeker:updateJobseeker }
+
+owbaz_jobseeker_profile_show:
+    pattern:  jobseeker/profile/show/{user_id}
+    defaults: { _controller: OwbazJobseekerBundle:Jobseeker:showJobseeker }
+    
+owbaz_jobseeker_jobpreference:
+    pattern:  jobseeker/job/preference/{user_id}
+    defaults: { _controller: OwbazJobseekerBundle:Jobseeker:jobPreferences }
+    
+owbaz_jobseeker_jobpreference_update:
+    pattern:  jobseeker/job/preference/{user_id}
+    defaults: { _controller: OwbazJobseekerBundle:Jobseeker:jobPreferencesUpdate }    
+    
+owbaz_jobseeker_password_change:
+    pattern:  jobseeker/password/change/{user_id}
+    defaults: { _controller: OwbazJobseekerBundle:Jobseeker:jobseekerPassword }
+
+owbaz_jobseeker_password_update:
+    pattern:  jobseeker/password/change/{user_id}
+    defaults: { _controller: OwbazJobseekerBundle:Jobseeker:updateJobseekerPassword }
+
+owbaz_jobseeker_image:
+    pattern:  jobseeker/image/{user_id}
+    defaults: { _controller: OwbazJobseekerBundle:Jobseeker:jobseekerUploadImage }
+
+owbaz_jobseeker_image_upload:
+    pattern:  jobseeker/image/upload/{user_id}
+    defaults: { _controller: OwbazJobseekerBundle:Jobseeker:uploadJobseekerImage }    
+    

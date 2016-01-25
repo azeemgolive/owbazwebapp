@@ -21,9 +21,16 @@ class JobsCategories
     */
     protected $jobs;    
     
+    /**
+     * @ORM\OneToMany(targetEntity="Owbaz\JobseekerBundle\Entity\JobPreferences", mappedBy="jobcategory",orphanRemoval=true)
+     */
+    protected $jobpreference;  
+    
+    
     public function __construct()
     {
-        $this->jobs = new ArrayCollection();       
+        $this->jobs = new ArrayCollection();  
+        $this->jobpreference = new ArrayCollection();  
     }
 
     
@@ -203,5 +210,39 @@ class JobsCategories
     public function getJobs()
     {
         return $this->jobs;
+    }
+
+    /**
+     * Add jobpreference
+     *
+     * @param \Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference
+     *
+     * @return JobsCategories
+     */
+    public function addJobpreference(\Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference)
+    {
+        $this->jobpreference[] = $jobpreference;
+
+        return $this;
+    }
+
+    /**
+     * Remove jobpreference
+     *
+     * @param \Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference
+     */
+    public function removeJobpreference(\Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference)
+    {
+        $this->jobpreference->removeElement($jobpreference);
+    }
+
+    /**
+     * Get jobpreference
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobpreference()
+    {
+        return $this->jobpreference;
     }
 }

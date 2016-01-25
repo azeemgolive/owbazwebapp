@@ -27,15 +27,21 @@ class Countries
     /**
      * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="country",orphanRemoval=true)
      */
-    protected $jobs;
+    protected $jobs;    
     
+   
+    /**
+     * @ORM\OneToMany(targetEntity="Owbaz\JobseekerBundle\Entity\JobPreferences", mappedBy="country",orphanRemoval=true)
+     */
+    protected $jobpreference;  
     
     
     public function __construct()
     {
         $this->location = new ArrayCollection();
         $this->users = new ArrayCollection();
-        $this->jobs = new ArrayCollection();
+        $this->jobs = new ArrayCollection();  
+        $this->jobpreference = new ArrayCollection();  
     }
 
 
@@ -313,5 +319,39 @@ class Countries
     public function getJobs()
     {
         return $this->jobs;
+    }
+
+    /**
+     * Add jobpreference
+     *
+     * @param \Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference
+     *
+     * @return Countries
+     */
+    public function addJobpreference(\Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference)
+    {
+        $this->jobpreference[] = $jobpreference;
+
+        return $this;
+    }
+
+    /**
+     * Remove jobpreference
+     *
+     * @param \Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference
+     */
+    public function removeJobpreference(\Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference)
+    {
+        $this->jobpreference->removeElement($jobpreference);
+    }
+
+    /**
+     * Get jobpreference
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobpreference()
+    {
+        return $this->jobpreference;
     }
 }

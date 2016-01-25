@@ -1,9 +1,11 @@
 <?php
 
 namespace Owbaz\UserBundle\Entity;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Owbaz\JobseekerBundle\ImageHelper;
 /**
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Owbaz\UserBundle\Repository\UserRepository")
@@ -15,7 +17,7 @@ class User
     //-----------------------one to many relationship with contry-----------------------------------------
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Countries", inversedBy="users")
-     * @ORM\JoinColumn(name="country_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id",onDelete="No Action")
      */    
      protected $country;
      
@@ -23,7 +25,7 @@ class User
      //-----------------------one to many relationship with contry-----------------------------------------
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Locations", inversedBy="users")
-     * @ORM\JoinColumn(name="location_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\JoinColumn(name="location_id", referencedColumnName="id",onDelete="No Action")
      */
       protected $location;
       
@@ -31,7 +33,7 @@ class User
       //-----------------------one to many relationship with industry-----------------------------------------
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Industries", inversedBy="users")
-     * @ORM\JoinColumn(name="industry_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\JoinColumn(name="industry_id", referencedColumnName="id",onDelete="No Action")
      */
       protected $industry;
       
@@ -42,14 +44,21 @@ class User
     
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Nationality", inversedBy="users")
-     * @ORM\JoinColumn(name="nationality_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\JoinColumn(name="nationality_id", referencedColumnName="id",onDelete="No Action")
      */    
      protected $nationality;
     
+     /**
+     * @ORM\OneToMany(targetEntity="Owbaz\JobseekerBundle\Entity\JobPreferences", mappedBy="jobpreference",orphanRemoval=true)
+     */
+    protected $jobpreference; 
+    
+      
       
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
+        $this->jobpreference = new ArrayCollection();
     }
     
     /**
@@ -237,6 +246,17 @@ class User
      */
     private $authTokenCreatedAt;
 
+    
+    /**
+     * @Assert\File(maxSize="6000000")
+     * @Assert\NotBlank(groups={"add"}, message = "must upload brand logo image!") 
+     */
+    public $file;
+    
+    
+    
+    
+
     /**
      * Get id
      *
@@ -328,7 +348,7 @@ class User
      */
     public function setPassword($password)
     {
-        $this->password = md5($password);
+        $this->password = $password;
 
         return $this;
     }
@@ -341,6 +361,30 @@ class User
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set industryType
+     *
+     * @param string $industryType
+     *
+     * @return User
+     */
+    public function setIndustryType($industryType)
+    {
+        $this->industry_type = $industryType;
+
+        return $this;
+    }
+
+    /**
+     * Get industryType
+     *
+     * @return string
+     */
+    public function getIndustryType()
+    {
+        return $this->industry_type;
     }
 
     /**
@@ -365,6 +409,30 @@ class User
     public function getPhoneNumber()
     {
         return $this->phone_number;
+    }
+
+    /**
+     * Set mobileNumber
+     *
+     * @param string $mobileNumber
+     *
+     * @return User
+     */
+    public function setMobileNumber($mobileNumber)
+    {
+        $this->mobile_number = $mobileNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get mobileNumber
+     *
+     * @return string
+     */
+    public function getMobileNumber()
+    {
+        return $this->mobile_number;
     }
 
     /**
@@ -416,6 +484,54 @@ class User
     }
 
     /**
+     * Set userEducation
+     *
+     * @param string $userEducation
+     *
+     * @return User
+     */
+    public function setUserEducation($userEducation)
+    {
+        $this->user_education = $userEducation;
+
+        return $this;
+    }
+
+    /**
+     * Get userEducation
+     *
+     * @return string
+     */
+    public function getUserEducation()
+    {
+        return $this->user_education;
+    }
+
+    /**
+     * Set userExperience
+     *
+     * @param string $userExperience
+     *
+     * @return User
+     */
+    public function setUserExperience($userExperience)
+    {
+        $this->user_experience = $userExperience;
+
+        return $this;
+    }
+
+    /**
+     * Get userExperience
+     *
+     * @return string
+     */
+    public function getUserExperience()
+    {
+        return $this->user_experience;
+    }
+
+    /**
      * Set companyName
      *
      * @param string $companyName
@@ -437,6 +553,30 @@ class User
     public function getCompanyName()
     {
         return $this->company_name;
+    }
+
+    /**
+     * Set userNationality
+     *
+     * @param string $userNationality
+     *
+     * @return User
+     */
+    public function setUserNationality($userNationality)
+    {
+        $this->user_nationality = $userNationality;
+
+        return $this;
+    }
+
+    /**
+     * Get userNationality
+     *
+     * @return string
+     */
+    public function getUserNationality()
+    {
+        return $this->user_nationality;
     }
 
     /**
@@ -656,150 +796,6 @@ class User
     }
 
     /**
-     * Set country
-     *
-     * @param \Owbaz\SiteBundle\Entity\Countries $country
-     *
-     * @return User
-     */
-    public function setCountry(\Owbaz\SiteBundle\Entity\Countries $country = null)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return \Owbaz\SiteBundle\Entity\Countries
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
-     * Set location
-     *
-     * @param \Owbaz\SiteBundle\Entity\Locations $location
-     *
-     * @return User
-     */
-    public function setLocation(\Owbaz\SiteBundle\Entity\Locations $location = null)
-    {
-        $this->location = $location;
-
-        return $this;
-    }
-
-    /**
-     * Get location
-     *
-     * @return \Owbaz\SiteBundle\Entity\Locations
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    /**
-     * Set mobileNumber
-     *
-     * @param string $mobileNumber
-     *
-     * @return User
-     */
-    public function setMobileNumber($mobileNumber)
-    {
-        $this->mobile_number = $mobileNumber;
-
-        return $this;
-    }
-
-    /**
-     * Get mobileNumber
-     *
-     * @return string
-     */
-    public function getMobileNumber()
-    {
-        return $this->mobile_number;
-    }
-
-    /**
-     * Set userEducation
-     *
-     * @param string $userEducation
-     *
-     * @return User
-     */
-    public function setUserEducation($userEducation)
-    {
-        $this->user_education = $userEducation;
-
-        return $this;
-    }
-
-    /**
-     * Get userEducation
-     *
-     * @return string
-     */
-    public function getUserEducation()
-    {
-        return $this->user_education;
-    }
-
-    /**
-     * Set userExperience
-     *
-     * @param string $userExperience
-     *
-     * @return User
-     */
-    public function setUserExperience($userExperience)
-    {
-        $this->user_experience = $userExperience;
-
-        return $this;
-    }
-
-    /**
-     * Get userExperience
-     *
-     * @return string
-     */
-    public function getUserExperience()
-    {
-        return $this->user_experience;
-    }
-
-    /**
-     * Set userNationality
-     *
-     * @param string $userNationality
-     *
-     * @return User
-     */
-    public function setUserNationality($userNationality)
-    {
-        $this->user_nationality = $userNationality;
-
-        return $this;
-    }
-
-    /**
-     * Get userNationality
-     *
-     * @return string
-     */
-    public function getUserNationality()
-    {
-        return $this->user_nationality;
-    }
-
-    /**
      * Set isActive
      *
      * @param boolean $isActive
@@ -862,30 +858,6 @@ class User
     }
 
     /**
-     * Set industryType
-     *
-     * @param string $industryType
-     *
-     * @return User
-     */
-    public function setIndustryType($industryType)
-    {
-        $this->industry_type = $industryType;
-
-        return $this;
-    }
-
-    /**
-     * Get industryType
-     *
-     * @return string
-     */
-    public function getIndustryType()
-    {
-        return $this->industry_type;
-    }
-
-    /**
      * Get authTokenCreatedAt
      *
      * @return \DateTime
@@ -895,7 +867,77 @@ class User
         return $this->authTokenCreatedAt;
     }
 
+    /**
+     * Set country
+     *
+     * @param \Owbaz\SiteBundle\Entity\Countries $country
+     *
+     * @return User
+     */
+    public function setCountry(\Owbaz\SiteBundle\Entity\Countries $country = null)
+    {
+        $this->country = $country;
 
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \Owbaz\SiteBundle\Entity\Countries
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set location
+     *
+     * @param \Owbaz\SiteBundle\Entity\Locations $location
+     *
+     * @return User
+     */
+    public function setLocation(\Owbaz\SiteBundle\Entity\Locations $location = null)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return \Owbaz\SiteBundle\Entity\Locations
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set industry
+     *
+     * @param \Owbaz\SiteBundle\Entity\Industries $industry
+     *
+     * @return User
+     */
+    public function setIndustry(\Owbaz\SiteBundle\Entity\Industries $industry = null)
+    {
+        $this->industry = $industry;
+
+        return $this;
+    }
+
+    /**
+     * Get industry
+     *
+     * @return \Owbaz\SiteBundle\Entity\Industries
+     */
+    public function getIndustry()
+    {
+        return $this->industry;
+    }
 
     /**
      * Add job
@@ -930,78 +972,6 @@ class User
     {
         return $this->jobs;
     }
-    
-    public function getAbsolutePath()
-    {
-        return null === $this->user_image
-            ? null
-            : $this->getUploadRootDir().'/'.$this->user_image;
-    }
-
-    public function getWebPath()
-    {
-        return null === $this->user_image
-            ? null
-            : $this->getUploadDir().'/'.$this->user_image;
-    }
-
-    protected function getUploadRootDir()
-    {
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        return 'uploads/owbaz/userimages';
-    }
-    
-    public function getCompanyAbsolutePath()
-    {
-        return null === $this->company_logo
-            ? null
-            : $this->getCompanyUploadRootDir().'/'.$this->company_logo;
-    }
-
-    public function getCompanyWebPath()
-    {
-        return null === $this->company_logo
-            ? null
-            : $this->getCompanyUploadDir().'/'.$this->company_logo;
-    }
-
-    protected function getCompanyUploadRootDir()
-    {
-        return __DIR__.'/../../../../web/'.$this->getCompanyUploadDir();
-    }
-
-    protected function getCompanyUploadDir()
-    {
-        return 'uploads/owbaz/companyimages';
-    }
-
-    /**
-     * Set industry
-     *
-     * @param \Owbaz\SiteBundle\Entity\Industries $industry
-     *
-     * @return User
-     */
-    public function setIndustry(\Owbaz\SiteBundle\Entity\Industries $industry = null)
-    {
-        $this->industry = $industry;
-
-        return $this;
-    }
-
-    /**
-     * Get industry
-     *
-     * @return \Owbaz\SiteBundle\Entity\Industries
-     */
-    public function getIndustry()
-    {
-        return $this->industry;
-    }
 
     /**
      * Set nationality
@@ -1026,4 +996,92 @@ class User
     {
         return $this->nationality;
     }
+
+    /**
+     * Add jobpreference
+     *
+     * @param \Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference
+     *
+     * @return User
+     */
+    public function addJobpreference(\Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference)
+    {
+        $this->jobpreference[] = $jobpreference;
+
+        return $this;
+    }
+
+    /**
+     * Remove jobpreference
+     *
+     * @param \Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference
+     */
+    public function removeJobpreference(\Owbaz\JobseekerBundle\Entity\JobPreferences $jobpreference)
+    {
+        $this->jobpreference->removeElement($jobpreference);
+    }
+
+    /**
+     * Get jobpreference
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobpreference()
+    {
+        return $this->jobpreference;
+    }
+    
+    
+
+    //-------------------------------------------------
+    //-------------- Image Upload ---------------------
+    //-------------------------------------------------
+    
+    public function upload() {
+        // the file property can be empty if the field is not required
+        if (null === $this->file) {
+            return;
+        }
+        
+       $ih=new ImageHelper('users', $this);
+        $ih->upload();
+    }
+//---------------------------------------------------
+    
+  public function getAbsolutePath()
+    {
+        return null === $this->user_image
+            ? null
+            : $this->getUploadRootDir().'/'.$this->user_image;
+    }
+//---------------------------------------------------
+    public function getWebPath()
+    {
+        return null === $this->user_image
+            ? null
+            : $this->getUploadDir().'/'.$this->user_image;
+    }
+//---------------------------------------------------
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+//---------------------------------------------------
+    protected function getUploadDir()
+    {
+        return 'uploads/owbaz/users';
+    }
+    //---------------------------------------------------
+    
+ /**
+ * @ORM\PostRemove
+ */
+public function deleteImages()
+{
+     $ih=new ImageHelper('users', $this);
+     $ih->deleteImages($this->user_image);
+}
+
+
+    
 }

@@ -15,25 +15,25 @@ class Jobs
 {
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\UserBundle\Entity\User", inversedBy="jobs")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id" , onDelete="CASCADE")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id" , onDelete="No Action")
      */
     protected $users;
     
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Countries", inversedBy="jobs")
-     * @ORM\JoinColumn(name="country_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id",onDelete="No Action")
      */
     protected $country;
     
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Locations", inversedBy="jobs")
-     * @ORM\JoinColumn(name="location_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\JoinColumn(name="location_id", referencedColumnName="id",onDelete="No Action")
      */
     protected $location;
     
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\JobsCategories", inversedBy="jobs")
-     * @ORM\JoinColumn(name="job_categories_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\JoinColumn(name="job_categories_id", referencedColumnName="id",onDelete="No Action")
      */
     protected $jobcategory;
     
