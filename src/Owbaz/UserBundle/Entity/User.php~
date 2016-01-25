@@ -5,6 +5,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Owbaz\JobseekerBundle\ImageHelper;
+
 /**
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Owbaz\UserBundle\Repository\UserRepository")
@@ -58,6 +60,7 @@ class User
     {
         $this->jobs = new ArrayCollection();
         $this->jobpreference = new ArrayCollection();
+        $this->salt = md5(uniqid(null, true));
     }
     
     /**
@@ -68,6 +71,13 @@ class User
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @var string $salt
+     *
+     * @ORM\Column(name="salt", type="string", length=32, nullable=true)
+     */
+    private $salt;
 
     /**
      * @var string
@@ -237,7 +247,15 @@ class User
      * 
      */
     private $authToken;
-    
+
+    /**
+     * @var string $authTokenWebService
+     *
+     * @ORM\Column(name="auth_token_web_service", type="string", length=50, nullable=true)
+     * 
+     */
+    private $authTokenWebService;
+
     /**
      * @var dateTime $authTokenCreatedAt
      *
@@ -248,17 +266,9 @@ class User
     
     /**
      * @Assert\File(maxSize="6000000")
+     * @Assert\NotBlank(groups={"add"}, message = "must upload brand logo image!") 
      */
-    private $file;
-    
-    
-     private $temp;
-    
-    
-   /**
-     * @Assert\File(maxSize="6000000")
-     */
-    private $employer_file;
+    public $file;
     
     
     
@@ -1039,113 +1049,56 @@ class User
     }
     
     
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->file = $file;
-        // check if we have an old image path
-        if (is_file($this->getAbsolutePath())) {
-            // store the old name to delete after the update
-            $this->temp = $this->getAbsolutePath();
-            $this->user_image = null;
-        } else {
-            $this->user_image;
-        }
-    }
 
-    /**
-     * Get file.
-     *
-     * @return UploadedFile
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
+    //-------------------------------------------------
+    //-------------- Image Upload ---------------------
+    //-------------------------------------------------
     
-    public function getWebPath()
-    {
-        return null === $this->file
-            ? null
-            : $this->getUploadDir().'/'.$this->file;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/owbaz/jobseekers/';
-    }
-    
-    
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function preUpload()
-    {
-        if (null !== $this->getFile()) {
-            $this->user_image = $this->getFile()->guessExtension();
-        }
-    }
-
-    /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
-     */
-    public function upload()
-    {
-        if (null === $this->getFile()) {
+    public function upload() {
+        // the file property can be empty if the field is not required
+        if (null === $this->file) {
             return;
         }
-
-        // check if we have an old image
-        if (isset($this->temp)) {
-            // delete the old image
-            unlink($this->temp);
-            // clear the temp image path
-            $this->temp = null;
-        }
-
-        // you must throw an exception here if the file cannot be moved
-        // so that the entity is not persisted to the database
-        // which the UploadedFile move() method does
-        $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->id.'.'.$this->getFile()->guessExtension()
-        );
-
-        $this->setFile(null);
+        
+       $ih=new ImageHelper('users', $this);
+        $ih->upload();
     }
-
-     /**
-     * @ORM\PreRemove()
-     */
-    public function storeFilenameForRemove()
-    {
-        $this->temp = $this->getAbsolutePath();
-    }
-
-    /**
-     * @ORM\PostRemove()
-     */
-    public function removeUpload()
-    {
-        if (isset($this->temp)) {
-            unlink($this->temp);
-        }
-    }
-
-    public function getAbsolutePath()
+//---------------------------------------------------
+    
+  public function getAbsolutePath()
     {
         return null === $this->user_image
             ? null
-            : $this->getUploadRootDir().'/'.$this->id.'.'.$this->user_image;
+            : $this->getUploadRootDir().'/'.$this->user_image;
     }
+//---------------------------------------------------
+    public function getWebPath()
+    {
+        return null === $this->user_image
+            ? null
+            : $this->getUploadDir().'/'.$this->user_image;
+    }
+//---------------------------------------------------
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+//---------------------------------------------------
+    protected function getUploadDir()
+    {
+        return 'uploads/owbaz/users';
+    }
+    //---------------------------------------------------
+    
+ /**
+ * @ORM\PostRemove
+ */
+public function deleteImages()
+{
+     $ih=new ImageHelper('users', $this);
+     $ih->deleteImages($this->user_image);
+}
+
+
+    
 }

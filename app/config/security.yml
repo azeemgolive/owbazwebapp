@@ -1,24 +1,58 @@
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/book/security.html
 security:
-
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
-    providers:
-        in_memory:
-            memory: ~
-
+    encoders:
+      Symfony\Component\Security\Core\User\User:
+           algorithm:   sha1
+           iterations: 1
+           encode_as_base64: false
+      
+      Owbaz\UserBundle\Entity\User:
+            algorithm:   sha1
+            iterations: 1
+            encode_as_base64: false
+            
+      
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
-        main:
+        secured_area:
+            pattern:    ^/
             anonymous: ~
-            # activate different ways to authenticate
+            form_login:
+                login_path:  /login
+                check_path:  /login_check
+                username_parameter: _username
+                password_parameter: _password
+                
+            logout:
+               path:   /logout
+               target: /login
+               success_handler: authentication_handler
+            #http_basic:
+                #realm: "Secured Demo Area"
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }        
+        - { path: /registration/, roles: ROLE_USER }        
+        - { path: /profile/, roles: ROLE_USER }        
+        - { path: /registration, roles: IS_AUTHENTICATED_ANONYMOUSLY }  
+        - { path: /registration, roles: IS_AUTHENTICATED_ANONYMOUSLY } 
+        - { path: /inner_site, roles: ROLE_USER }
+        
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, user_db]
+        in_memory:
+            memory:
+                users:
+                    waq:  { password: 5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8, roles: 'ROLE_ADMIN' }
+                    admin: { password: d033e22ae348aeb5660fc2140aec35850c4da997, roles: 'ROLE_ADMIN' }
+        user_db:                      
+            entity: { class: Owbaz\UserBundle\Entity\User, property: email }
+            
+            
+
+    #encoders:
+        #
+        #Symfony\Component\Security\Core\User\User: plaintext
+        
+        

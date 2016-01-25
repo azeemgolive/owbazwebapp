@@ -15,7 +15,37 @@ class UserController extends Controller
 
     public function indexAction()
     {
-        return $this->render('OwbazUserBundle:Default:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $user_id = $this->get('security.context')->getToken()->getUser()->getId();
+        $entity = $em->getRepository('OwbazUserBundle:User')->find($user_id);
+        if($entity->getUserType()=="jobseeker"){
+            return $this->render('OwbazUserBundle:Jobseekers:dashboard.html.twig',array('jobseeker'=>$entity));
+        }else if($entity->getUserType()=="employer")
+        {
+            return $this->render('OwbazUserBundle:Employers:dashboard.html.twig',array('employer'=>$entity));
+        }else
+        {
+            $request = $this->getRequest();
+            $session = $request->getSession();
+
+        // get the login error if there is one
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(
+                    SecurityContext::AUTHENTICATION_ERROR
+            );
+        } else {
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+        }
+
+        return $this->render(
+                        'OwbazUserBundle:Security:login.html.twig', array(
+                    // last username entered by the user
+                    'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+                    'error' => $error,
+                        )
+        );
+        }
     }
 
     //-------------------------------add new employer Form------------------------------------------------
@@ -111,15 +141,13 @@ class UserController extends Controller
            }
     }
 
-    public function employerDashboardAction($user_id)
+    public function employerDashboardAction()
     {
-        $entity=  $this->getEmployer($user_id);
-        return $this->render('OwbazUserBundle:Employers:dashboard.html.twig',array('employer'=>$entity));
+        return $this->render('OwbazUserBundle:Employers:dashboard.html.twig');
     }
-    public function jobseekerDashboardAction($user_id)
+    public function jobseekerDashboardAction()
     {
-        $entity=  $this->getJobseeker($user_id);
-        return $this->render('OwbazUserBundle:Jobseekers:dashboard.html.twig',array('jobseeker'=>$entity));
+        return $this->render('OwbazUserBundle:Jobseekers:dashboard.html.twig');
     }
     //---------------------------------------------------------------------
 
@@ -134,11 +162,11 @@ class UserController extends Controller
                         ->find($id);
     }
 
-    //------------------------------------------------------------------------
-    private function getEmployer($id) {
-        return $this->getDoctrine()
-            ->getRepository('OwbazUserBundle:User')
-            ->find($id);
+    
+    
+    private function renderJobseeker()
+    {
+        
     }
 
 }

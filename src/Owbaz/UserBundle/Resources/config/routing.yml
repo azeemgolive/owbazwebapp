@@ -14,3 +14,26 @@ owbaz_users_login_check:
     pattern:  /owbaz/user/checklogin
     defaults: { _controller: OwbazUserBundle:User:checkUserLogin }
 
+#---------------------------------------------- Login ------------------------------------------
+
+admin_login:
+    pattern:   /admin/login
+    defaults:  { _controller: OwbazUserBundle:Security:adminLogin }
+
+admin:
+    pattern:   /admin
+    defaults:  { _controller: OwbazUserBundle:Security:adminLogin }
+
+login:
+    pattern:   /login
+    defaults: { _controller: OwbazUserBundle:Security:login }
+    #defaults:  { _controller: OwbazUserBundle:Security:login }
+
+login_check:
+    pattern:   /login_check
+
+admin_logout:
+    pattern:   /logout
+    
+logout:
+    pattern:   /logout    

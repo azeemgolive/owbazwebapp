@@ -3,17 +3,19 @@
 namespace Owbaz\UserBundle\Entity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Owbaz\JobseekerBundle\ImageHelper;
+
 /**
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Owbaz\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="jobsite_users")
  * @ORM\HasLifecycleCallbacks()
  */
-class User
-{
+class User implements UserInterface, \Serializable {
+
     //-----------------------one to many relationship with contry-----------------------------------------
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Countries", inversedBy="users")
@@ -59,6 +61,7 @@ class User
     {
         $this->jobs = new ArrayCollection();
         $this->jobpreference = new ArrayCollection();
+        $this->salt = md5(uniqid(null, true));
     }
     
     /**
@@ -69,6 +72,13 @@ class User
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @var string $salt
+     *
+     * @ORM\Column(name="salt", type="string", length=32, nullable=true)
+     */
+    private $salt;
 
     /**
      * @var string
@@ -238,7 +248,15 @@ class User
      * 
      */
     private $authToken;
-    
+
+    /**
+     * @var string $authTokenWebService
+     *
+     * @ORM\Column(name="auth_token_web_service", type="string", length=50, nullable=true)
+     * 
+     */
+    private $authTokenWebService;
+
     /**
      * @var dateTime $authTokenCreatedAt
      *
@@ -361,6 +379,57 @@ class User
     public function getPassword()
     {
         return $this->password;
+    }
+    
+    
+    //----------------------- Old password field used for resetting password only
+
+    public $old_password;
+
+    public function getOldpassword() {
+        return $this->old_password;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string 
+     */
+    public function getUsername() {
+        return $this->email;
+    }
+    
+    
+    /**
+     * @inheritDoc
+     */
+    public function getRoles() {
+        return array('ROLE_USER');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials() {
+        
+    }
+
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize() {
+        return serialize(array(
+                    $this->id,
+                ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized) {
+        list (
+                $this->id,
+                ) = unserialize($serialized);
     }
 
     /**
@@ -1084,4 +1153,52 @@ public function deleteImages()
 
 
     
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * Set authTokenWebService
+     *
+     * @param string $authTokenWebService
+     *
+     * @return User
+     */
+    public function setAuthTokenWebService($authTokenWebService)
+    {
+        $this->authTokenWebService = $authTokenWebService;
+
+        return $this;
+    }
+
+    /**
+     * Get authTokenWebService
+     *
+     * @return string
+     */
+    public function getAuthTokenWebService()
+    {
+        return $this->authTokenWebService;
+    }
 }

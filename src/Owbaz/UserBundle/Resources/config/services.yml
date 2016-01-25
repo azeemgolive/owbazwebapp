@@ -1,4 +1,19 @@
+parameters:
+#    owbaz_user.example.class: Owbaz\UserBundle\Example
+
 services:
 #    owbaz_user.example:
-#        class: Owbaz\UserBundle\Example
+#        class: %owbaz_user.example.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+  user.helper.user:
+        class: Owbaz\UserBundle\Entity\UserHelper
+        arguments:
+            dispatcher: "@event_dispatcher"
+            em: "@doctrine.orm.entity_manager"
+            class: Owbaz\UserBundle\Entity\User
+            
+  authentication_handler:
+        class: Owbaz\UserBundle\Handler\AuthenticationHandler
+        arguments:
+            router: "@router"
+  

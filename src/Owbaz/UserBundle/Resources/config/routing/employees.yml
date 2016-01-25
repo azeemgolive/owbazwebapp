@@ -7,7 +7,7 @@ owbaz_user_employees_create:
     defaults: { _controller: OwbazUserBundle:User:createEmployer }
 
 owbaz_employer_dashboard:
-    pattern:  employees/dashboard/{user_id}
+    pattern:  employees/dashboard
     defaults: { _controller: OwbazUserBundle:User:employerdashboard }
 
 owbaz_employer_profile_edit:
