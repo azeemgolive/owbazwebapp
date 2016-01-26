@@ -20,4 +20,17 @@ class JobsRepository extends \Doctrine\ORM\EntityRepository
             return null;
         }
     }
+    
+    public function getAllLatestJobs()
+    {
+       $total_record = $this->getEntityManager()
+                ->createQuery('SELECT j FROM OwbazJobsBundle:Jobs j  ORDER BY j.id DESC');
+        try {
+            return $total_record->getResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }   
+    
+    
 }

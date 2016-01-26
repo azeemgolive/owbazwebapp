@@ -271,6 +271,13 @@ class User implements UserInterface, \Serializable {
      */
     public $file;
     
+    /**
+     * @Assert\File(maxSize="6000000")
+     * @Assert\NotBlank(groups={"add"}, message = "must upload brand logo image!") 
+     */
+    public $company_file;
+    
+    
     
     
     
@@ -1152,7 +1159,56 @@ public function deleteImages()
 }
 
 
+
+//-------------------------------------------------
+    //-------------- Image Upload ---------------------
+    //-------------------------------------------------
     
+    public function uploadCompanyLogo() {
+        // the file property can be empty if the field is not required
+        if (null === $this->file) {
+            return;
+        }
+        
+       $ih=new ImageHelper('company_logo', $this);
+        $ih->uploadCompanyLogo();
+    }
+//---------------------------------------------------
+    
+  public function getCompanyAbsolutePath()
+    {
+        return null === $this->company_file
+            ? null
+            : $this->getCompanyUploadRootDir().'/'.$this->company_file;
+    }
+//---------------------------------------------------
+    public function getCompanyWebPath()
+    {
+        return null === $this->company_file
+            ? null
+            : $this->getCompanyUploadDir().'/'.$this->company_file;
+    }
+//---------------------------------------------------
+    protected function getCompanyUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getCompanyUploadDir();
+    }
+//---------------------------------------------------
+    protected function getCompanyUploadDir()
+    {
+        return 'uploads/owbaz/company_logo';
+    }
+    //---------------------------------------------------
+    
+ /**
+ * @ORM\PostRemove
+ */
+public function deleteCompanyImages()
+{
+     $ih=new ImageHelper('company_logo', $this);
+     $ih->deleteCompanyImages($this->company_logo);
+}
+
 
     /**
      * Set salt

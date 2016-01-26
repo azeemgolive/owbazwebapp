@@ -1,3 +1,15 @@
 owbaz_jobs:
-    pattern:  /owbaz/jobs
+    pattern:  /jobs
     defaults: { _controller: OwbazJobsBundle:Jobs:index }
+
+owbaz_latest_jobs:
+    pattern:  /lastest_jobs
+    defaults: { _controller: OwbazJobsBundle:Jobs:latestJobs }
+    
+owbaz_employer_new_job:
+    pattern:  /new/job
+    defaults: { _controller: OwbazJobsBundle:Jobs:addNewJob }
+
+owbaz_jobs_create:
+    pattern:  /job/create
+    defaults: { _controller: OwbazJobsBundle:Jobs:createNewJob }

@@ -1,9 +1,14 @@
 
-Helloo {{ employer.FirstName }}
+Helloo {{ employer.CompanyName }}
 
 <br />
 <br />
 <a href="{{ path('owbaz_employer_profile_edit',{'user_id':employer.Id}) }}">Edit Profile </a>
 
+<br />
+<br />
+<a href="{{ path('owbaz_employer_new_job') }}">Post Job </a>
 
-
+<br/>
+<br/>
+<a href="{{ path('owbaz_employer_upload_logo') }}">Company Logo </a>

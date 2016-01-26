@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
- *@ORM\Entity(repositoryClass="Owbaz\JobsBundle\Repository\JobsRepository")
+ * @ORM\Entity(repositoryClass="Owbaz\JobsBundle\Repository\JobsRepository")
  * @ORM\Table(name="jobsite_jobs")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -72,45 +72,59 @@ class Jobs
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="start_date", type="datetime")
+     * @ORM\Column(name="start_date", type="datetime",nullable=true)
      */
     private $startDate;
     
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="expire_date", type="datetime")
+     * @ORM\Column(name="expire_date", type="datetime",nullable=true)
      */
     private $expireDate;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="isActive", type="string", length=255)
+     * @ORM\Column(name="createdAt", type="datetime",nullable=true)
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="updatedAt", type="datetime",nullable=true)
      */
     private $updatedAt;
 
     /**
-     * @var \DateTime
+     * @var \isActive
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="is_active", type="string", length=10,nullable=true)
      */
     private $isActive;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="job_type", type="string", length=255)
+     * @ORM\Column(name="job_type", type="string", length=255,nullable=true)
      */
     private $jobType;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="job_education", type="string", length=255,nullable=true)
+     */
+    private $job_education;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="job_experience", type="string", length=255,nullable=true)
+     */
+    private $job_experience;
+    
     
     /**
      * Get id
@@ -218,29 +232,7 @@ class Jobs
         return $this->startDate;
     }
 
-    /**
-     * Set isActive
-     *
-     * @param string $isActive
-     *
-     * @return Jobs
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
-
-        return $this;
-    }
-
-    /**
-     * Get isActive
-     *
-     * @return string
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
+    
 
     /**
      * Set createdAt
@@ -466,5 +458,77 @@ class Jobs
     public function getJobType()
     {
         return $this->jobType;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param string $isActive
+     *
+     * @return Jobs
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return string
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set jobEducation
+     *
+     * @param string $jobEducation
+     *
+     * @return Jobs
+     */
+    public function setJobEducation($jobEducation)
+    {
+        $this->job_education = $jobEducation;
+
+        return $this;
+    }
+
+    /**
+     * Get jobEducation
+     *
+     * @return string
+     */
+    public function getJobEducation()
+    {
+        return $this->job_education;
+    }
+
+    /**
+     * Set jobExperience
+     *
+     * @param string $jobExperience
+     *
+     * @return Jobs
+     */
+    public function setJobExperience($jobExperience)
+    {
+        $this->job_experience = $jobExperience;
+
+        return $this;
+    }
+
+    /**
+     * Get jobExperience
+     *
+     * @return string
+     */
+    public function getJobExperience()
+    {
+        return $this->job_experience;
     }
 }

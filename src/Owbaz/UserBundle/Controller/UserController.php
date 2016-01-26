@@ -19,10 +19,12 @@ class UserController extends Controller
         $user_id = $this->get('security.context')->getToken()->getUser()->getId();
         $entity = $em->getRepository('OwbazUserBundle:User')->find($user_id);
         if($entity->getUserType()=="jobseeker"){
-            return $this->render('OwbazUserBundle:Jobseekers:dashboard.html.twig',array('jobseeker'=>$entity));
+            return $this->redirect($this->generateUrl('owbaz_jobseeker_dashboard'));
+            //return $this->render('OwbazUserBundle:Jobseekers:dashboard.html.twig');
         }else if($entity->getUserType()=="employer")
         {
-            return $this->render('OwbazUserBundle:Employers:dashboard.html.twig',array('employer'=>$entity));
+            return $this->redirect($this->generateUrl('owbaz_employer_dashboard'));
+            //return $this->render('OwbazUserBundle:Employers:dashboard.html.twig',array('employer'=>$entity));
         }else
         {
             $request = $this->getRequest();
@@ -143,11 +145,17 @@ class UserController extends Controller
 
     public function employerDashboardAction()
     {
-        return $this->render('OwbazUserBundle:Employers:dashboard.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $user_id = $this->get('security.context')->getToken()->getUser()->getId();
+        $entity = $em->getRepository('OwbazUserBundle:User')->find($user_id);
+        return $this->render('OwbazUserBundle:Employers:dashboard.html.twig',array('employer'=>$entity));
     }
     public function jobseekerDashboardAction()
     {
-        return $this->render('OwbazUserBundle:Jobseekers:dashboard.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $user_id = $this->get('security.context')->getToken()->getUser()->getId();
+        $entity = $em->getRepository('OwbazUserBundle:User')->find($user_id);
+        return $this->render('OwbazUserBundle:Jobseekers:dashboard.html.twig',array('jobseeker'=>$entity));
     }
     //---------------------------------------------------------------------
 

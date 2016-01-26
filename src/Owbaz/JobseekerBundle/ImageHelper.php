@@ -52,6 +52,30 @@ class ImageHelper {
         
         $this->entity->file = null;
     }
+    
+    
+    public function uploadCompanyLogo() {
+        
+        if (null === $this->entity->file) {
+            return;
+        }
+        
+        $previous_image=$this->user_image;
+        $ext = pathinfo($this->entity->file->getClientOriginalName(), PATHINFO_EXTENSION);
+        
+        $this->user_image=uniqid() .'.'. $ext;
+        $this->entity->setCompanyLogo($this->user_image);        
+        $this->entity->file->move(
+                $this->getUploadRootDir(), $this->user_image
+        );
+        
+        $this->resize_image();
+        //if record is being updated, then delete previous images
+        if ($this->entity->getId())
+            $this->deleteCompanyImages($previous_image); 
+        
+        $this->entity->file = null;
+    }
 //--------------------------------------------------------------------
     public function uploadProductTempImage()
     {
@@ -225,6 +249,19 @@ class ImageHelper {
         
     }
     
+    //-----------------------------------------------
     
+    public function deleteCompanyImages($old_filename)
+    {
+        foreach ($this->conf as $key => $value) {
+            $value = $this->validateConf($value);
+            $generated_file_name =  $this->generateImagePath($key, $value, $old_filename);
+            
+            if (is_readable($generated_file_name )){
+                @unlink($generated_file_name );    
+            }
+        }
+        
+    }
 }
 

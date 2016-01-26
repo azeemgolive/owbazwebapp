@@ -1,10 +1,10 @@
 owbaz_new_employer:
     pattern:  /employees/register
-    defaults: { _controller: OwbazUserBundle:User:NewEmployer }
+    defaults: { _controller: OwbazUserBundle:Registration:NewEmployer }
 
 owbaz_user_employees_create:
     pattern:  /employees/create
-    defaults: { _controller: OwbazUserBundle:User:createEmployer }
+    defaults: { _controller: OwbazUserBundle:Registration:createEmployer }
 
 owbaz_employer_dashboard:
     pattern:  employees/dashboard
@@ -17,3 +17,11 @@ owbaz_employer_profile_edit:
 owbaz_employer_profile_updated:
     pattern:  employees/profile/updated/{user_id}
     defaults: { _controller: OwbazEmployerBundle:Employer:updatedEmployer }
+
+owbaz_employer_upload_logo:
+    pattern:  employees/company_logo/upload
+    defaults: { _controller: OwbazEmployerBundle:Employer:uploadEmployerLogo }
+
+owbaz_employer_company_logo_upload:
+    pattern:  employees/company/logo/upload
+    defaults: { _controller: OwbazEmployerBundle:Employer:uploadEmployerImage }

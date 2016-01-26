@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Owbaz\UserBundle\Form\Type\EmployerType;
-
+use Owbaz\EmployerBundle\Form\Type\EmployerImageType;
 
 class EmployerController extends Controller
 {
@@ -47,6 +47,34 @@ class EmployerController extends Controller
 
     }
 
+    //--------------------------uplod logo form---------------------------------------------------------
+    public function uploadEmployerLogoAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user_id = $this->get('security.context')->getToken()->getUser()->getId();
+        $entity = $em->getRepository('OwbazUserBundle:User')->find($user_id);
+        $form      =  $form = $this->createForm(new EmployerImageType(), $entity); 
+      return $this->render('OwbazEmployerBundle:Employers:upload_image.html.twig', array(
+            'form' => $form->createView(),
+            'jobseeker' => $entity));
+    }
+    
+    
+    public function uploadEmployerImageAction(Request $request)
+   {      
+      $em = $this->getDoctrine()->getManager();
+        $user_id = $this->get('security.context')->getToken()->getUser()->getId();
+        $entity = $em->getRepository('OwbazUserBundle:User')->find($user_id);
+      $form      =  $form = $this->createForm(new EmployerImageType(), $entity); 
+      $form->bind($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity->setUpdatedAt(new \DateTime('now'));
+            $entity->uploadCompanyLogo();
+            $em->persist($entity);
+            $em->flush();   
+        }
+   }
 
     //--------- Get Employer Details---------------------------------------------------------------------
     private function getEmployer($id) {
