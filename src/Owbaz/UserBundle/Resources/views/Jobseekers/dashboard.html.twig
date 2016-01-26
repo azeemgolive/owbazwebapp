@@ -22,7 +22,7 @@
         <div class="col-md-3 hidden-sm hidden-xs welcome-left-block">
 
             <h1>
-                Welcome {{jobseeker.FirstName }},
+                Welcome {{ app.user.username }},
             </h1>
 
 
@@ -31,11 +31,10 @@
         <div class="col-md-9" id="home-links-area">
 
 
-
             <div style="padding:10px" class="row">
                 <div id="box-1" class="col-md-4 col-sm-6 col-xs-12 t-padding ui-droppable">
                     <div style="position: relative;" id="b-1" class="tile-p ui-draggable">
-                        <a href="{{ path('owbaz_jobseeker_profile_edit', {'user_id': jobseeker.Id}) }}" class="home-tile box-1-back"><h3 class="h3-tile">Profile / Modify</h3>
+                        <a href="{{ path('owbaz_jobseeker_profile_edit') }}" class="home-tile box-1-back"><h3 class="h3-tile">Profile / Modify</h3>
                         </a>                    </div>
                 </div>
 
@@ -78,9 +77,11 @@
 
                 <div id="box-6" class="col-md-4 col-sm-6 col-xs-12 t-padding ui-droppable">
                     <div style="position: relative;" id="b-6" class="tile-p ui-draggable">
-                        <a href="" class="home-tile box-5-back"><h3 class="h3-tile">My Documents</h3>
+                        <a href="{{ path('owbaz_jobseeker_document') }}" class="home-tile box-5-back"><h3 class="h3-tile">My Documents</h3>
                         </a>                    </div>
                 </div>
+
+
                         
                         
                    <div id="box-6" class="col-md-4 col-sm-6 col-xs-12 t-padding ui-droppable">

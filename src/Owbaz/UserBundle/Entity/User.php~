@@ -38,12 +38,19 @@ class User implements UserInterface, \Serializable {
      * @ORM\JoinColumn(name="industry_id", referencedColumnName="id",onDelete="No Action")
      */
       protected $industry;
+
       
     /**
      * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="users",orphanRemoval=true)
      */
-    protected $jobs;  
-    
+    protected $jobs;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="UserDocument", mappedBy="users",orphanRemoval=true)
+     */
+    protected $documents;
+
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Nationality", inversedBy="users")
      * @ORM\JoinColumn(name="nationality_id", referencedColumnName="id",onDelete="No Action")
@@ -62,6 +69,7 @@ class User implements UserInterface, \Serializable {
         $this->jobs = new ArrayCollection();
         $this->jobpreference = new ArrayCollection();
         $this->salt = md5(uniqid(null, true));
+        $this->documents = new ArrayCollection();
     }
     
     /**
@@ -271,6 +279,13 @@ class User implements UserInterface, \Serializable {
      */
     public $file;
     
+    /**
+     * @Assert\File(maxSize="6000000")
+     * @Assert\NotBlank(groups={"add"}, message = "must upload brand logo image!") 
+     */
+    public $company_file;
+    
+    
     
     
     
@@ -396,7 +411,7 @@ class User implements UserInterface, \Serializable {
      * @return string 
      */
     public function getUsername() {
-        return $this->email;
+        return $this->first_name;
     }
     
     
@@ -1152,7 +1167,56 @@ public function deleteImages()
 }
 
 
+
+//-------------------------------------------------
+    //-------------- Image Upload ---------------------
+    //-------------------------------------------------
     
+    public function uploadCompanyLogo() {
+        // the file property can be empty if the field is not required
+        if (null === $this->file) {
+            return;
+        }
+        
+       $ih=new ImageHelper('company_logo', $this);
+        $ih->uploadCompanyLogo();
+    }
+//---------------------------------------------------
+    
+  public function getCompanyAbsolutePath()
+    {
+        return null === $this->company_file
+            ? null
+            : $this->getCompanyUploadRootDir().'/'.$this->company_file;
+    }
+//---------------------------------------------------
+    public function getCompanyWebPath()
+    {
+        return null === $this->company_file
+            ? null
+            : $this->getCompanyUploadDir().'/'.$this->company_file;
+    }
+//---------------------------------------------------
+    protected function getCompanyUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getCompanyUploadDir();
+    }
+//---------------------------------------------------
+    protected function getCompanyUploadDir()
+    {
+        return 'uploads/owbaz/company_logo';
+    }
+    //---------------------------------------------------
+    
+ /**
+ * @ORM\PostRemove
+ */
+public function deleteCompanyImages()
+{
+     $ih=new ImageHelper('company_logo', $this);
+     $ih->deleteCompanyImages($this->company_logo);
+}
+
 
     /**
      * Set salt
@@ -1200,5 +1264,41 @@ public function deleteImages()
     public function getAuthTokenWebService()
     {
         return $this->authTokenWebService;
+    }
+
+    
+
+    /**
+     * Add document
+     *
+     * @param \Owbaz\UserBundle\Entity\UserDocument $document
+     *
+     * @return User
+     */
+    public function addDocument(\Owbaz\UserBundle\Entity\UserDocument $document)
+    {
+        $this->documents[] = $document;
+
+        return $this;
+    }
+
+    /**
+     * Remove document
+     *
+     * @param \Owbaz\UserBundle\Entity\UserDocument $document
+     */
+    public function removeDocument(\Owbaz\UserBundle\Entity\UserDocument $document)
+    {
+        $this->documents->removeElement($document);
+    }
+
+    /**
+     * Get documents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDocuments()
+    {
+        return $this->documents;
     }
 }

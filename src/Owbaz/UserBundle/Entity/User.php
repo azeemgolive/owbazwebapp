@@ -38,12 +38,19 @@ class User implements UserInterface, \Serializable {
      * @ORM\JoinColumn(name="industry_id", referencedColumnName="id",onDelete="No Action")
      */
       protected $industry;
+
       
     /**
      * @ORM\OneToMany(targetEntity="Owbaz\JobsBundle\Entity\Jobs", mappedBy="users",orphanRemoval=true)
      */
-    protected $jobs;  
-    
+    protected $jobs;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="UserDocument", mappedBy="users",orphanRemoval=true)
+     */
+    protected $documents;
+
     /**
      * @ORM\ManyToOne(targetEntity="Owbaz\SiteBundle\Entity\Nationality", inversedBy="users")
      * @ORM\JoinColumn(name="nationality_id", referencedColumnName="id",onDelete="No Action")
@@ -62,6 +69,7 @@ class User implements UserInterface, \Serializable {
         $this->jobs = new ArrayCollection();
         $this->jobpreference = new ArrayCollection();
         $this->salt = md5(uniqid(null, true));
+        $this->documents = new ArrayCollection();
     }
     
     /**
@@ -403,7 +411,7 @@ class User implements UserInterface, \Serializable {
      * @return string 
      */
     public function getUsername() {
-        return $this->email;
+        return $this->first_name;
     }
     
     
@@ -1256,5 +1264,41 @@ public function deleteCompanyImages()
     public function getAuthTokenWebService()
     {
         return $this->authTokenWebService;
+    }
+
+    
+
+    /**
+     * Add document
+     *
+     * @param \Owbaz\UserBundle\Entity\UserDocument $document
+     *
+     * @return User
+     */
+    public function addDocument(\Owbaz\UserBundle\Entity\UserDocument $document)
+    {
+        $this->documents[] = $document;
+
+        return $this;
+    }
+
+    /**
+     * Remove document
+     *
+     * @param \Owbaz\UserBundle\Entity\UserDocument $document
+     */
+    public function removeDocument(\Owbaz\UserBundle\Entity\UserDocument $document)
+    {
+        $this->documents->removeElement($document);
+    }
+
+    /**
+     * Get documents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDocuments()
+    {
+        return $this->documents;
     }
 }
