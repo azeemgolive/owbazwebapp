@@ -13,6 +13,7 @@ use Owbaz\UserBundle\Entity\UserDocument;
 use Owbaz\JobseekerBundle\Form\Type\UserPasswordReset;
 use Owbaz\JobseekerBundle\Form\Type\JobseekerImageType;
 use Owbaz\UserBundle\Form\Type\DocumentType;
+use Owbaz\UserBundle\Form\Type\EditDocumentType;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 
@@ -201,6 +202,35 @@ class JobseekerController extends Controller
         return $this->redirect($this->generateUrl('owbaz_jobseeker_dashboard'));
 
     }
+
+    // ---------------------- Edit Document Page----------------------------------------------------
+    public function editDocumentAction($document_id)
+    {
+        $entity = $this->getDocumentId($document_id);
+        $form = $this->createForm(new EditDocumentType(), $entity);
+        return $this->render('OwbazJobseekerBundle:Jobseekers:edit_document.html.twig', array(
+            'form' => $form->createView(),
+            'entity' => $entity));
+
+    }
+
+    //----------------------Update Document --------------------------------------------------------
+    public function updatedDocumentAction(Request $request,$document_id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $entity = $this->getDocumentId($document_id);
+        $form = $this->createForm(new EditDocumentType(), $entity);
+        $form->bind($request);
+        if ($form->isValid()) {
+
+            $entity->setUpdatedAt(new \DateTime('now'));
+            $em->persist($entity);
+            $em->flush();
+        }
+        return $this->redirect($this->generateUrl('owbaz_jobseeker_document'));
+
+    }
    
 
     //--------------------------get jobseeker by id--------------------------------------------------
@@ -210,4 +240,12 @@ class JobseekerController extends Controller
                         ->getRepository('OwbazUserBundle:User')
                         ->find($user_id);    
     }
+    private function getDocumentId($document_id)
+    {
+        return $this->getDoctrine()
+            ->getRepository('OwbazUserBundle:UserDocument')
+            ->find($document_id);
+    }
+
+
 }

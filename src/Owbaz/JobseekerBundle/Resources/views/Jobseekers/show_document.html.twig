@@ -8,7 +8,25 @@ Add New Document
 <br />
 <br />
 
-{% for document in document_entity %}
-    {{ document.DocumentName }}
-    <br />
-{%endfor%}
+<table border="2">
+    <th>Modify</th>
+    <th>Date</th>
+    <th>Size</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>CV</th>
+    <th>Open</th>
+    {% for document in document_entity %}
+        <tr>
+        <td><a href="{{ path('owbaz_jobseeker_document_edit', {'document_id': document.Id}) }}"> <img src="/owbazwebapp/web/uploads/owbaz/images/link_arrow.gif"> </a></td>
+        <td>{{ document.CreatedAt|date('d-m-Y') }}</td>
+        <td>{{ document.DocumentSize }}</td>
+        <td>{{ document.DocumentName }}</td>
+        <td>{{ document.DocumentDescription }}</td>
+        <td>{{ document.IsCv }}</td>
+        <td><a href="{{  asset(document.WebPath)  }}">OPEN</a> </td>
+
+        </tr>
+
+    {%endfor%}
+</table>

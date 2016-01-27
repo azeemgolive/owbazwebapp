@@ -65,4 +65,12 @@ owbaz_jobseeker_document_add:
 owbaz_jobseeker_document_upload:
     pattern:  jobseeker/document/upload
     defaults: { _controller: OwbazJobseekerBundle:Jobseeker:uploadDocument }
+
+owbaz_jobseeker_document_edit:
+    pattern:  jobseeker/document/edit/{document_id}
+    defaults: { _controller: OwbazJobseekerBundle:Jobseeker:editDocument }
+
+owbaz_jobseeker_document_edit_upload:
+    pattern:  jobseeker/document/updated/{document_id}
+    defaults: { _controller: OwbazJobseekerBundle:Jobseeker:updatedDocument }
     
