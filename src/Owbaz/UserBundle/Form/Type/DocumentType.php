@@ -9,10 +9,15 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class DocumentType extends AbstractType
 {
+    public function __construct($mode) {
+        $this->mode = $mode;
+    }
     
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        if($this->mode=='add'){
         $builder->add('file');
+        }      
         $builder->add('documentDescription','textarea');
         $builder->add('isCv', 'choice', array('choices'=> array('yes'=>'Yes','no'=>'No')));
 

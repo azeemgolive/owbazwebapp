@@ -173,7 +173,7 @@ class JobseekerController extends Controller
         $entity= new UserDocument();
         $user_id = $this->get('security.context')->getToken()->getUser()->getId();
         $jobseeker=  $this->getJobsseker($user_id);
-        $form = $this->createForm(new DocumentType(), $entity);
+        $form = $this->createForm(new DocumentType('add'), $entity);
         return $this->render('OwbazJobseekerBundle:Jobseekers:add_document.html.twig', array(
             'form' => $form->createView(),
             'jobseeker' => $jobseeker));
@@ -187,7 +187,7 @@ class JobseekerController extends Controller
         $entity= new UserDocument();
         $user_id = $this->get('security.context')->getToken()->getUser()->getId();
         $jobseeker=  $this->getJobsseker($user_id);
-        $form = $this->createForm(new DocumentType(), $entity);
+        $form = $this->createForm(new DocumentType('add'), $entity);
         $form->bind($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -207,7 +207,7 @@ class JobseekerController extends Controller
     public function editDocumentAction($document_id)
     {
         $entity = $this->getDocumentId($document_id);
-        $form = $this->createForm(new EditDocumentType(), $entity);
+        $form = $this->createForm(new DocumentType('edit'), $entity);
         return $this->render('OwbazJobseekerBundle:Jobseekers:edit_document.html.twig', array(
             'form' => $form->createView(),
             'entity' => $entity));
@@ -220,7 +220,7 @@ class JobseekerController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $entity = $this->getDocumentId($document_id);
-        $form = $this->createForm(new EditDocumentType(), $entity);
+        $form = $this->createForm(new DocumentType('edit'), $entity);
         $form->bind($request);
         if ($form->isValid()) {
 
