@@ -1185,16 +1185,16 @@ public function deleteImages()
     
   public function getCompanyAbsolutePath()
     {
-        return null === $this->company_file
+        return null === $this->company_logo
             ? null
-            : $this->getCompanyUploadRootDir().'/'.$this->company_file;
+            : $this->getCompanyUploadRootDir().'/'.$this->company_logo;
     }
 //---------------------------------------------------
     public function getCompanyWebPath()
     {
-        return null === $this->company_file
+        return null === $this->company_logo
             ? null
-            : $this->getCompanyUploadDir().'/'.$this->company_file;
+            : $this->getCompanyUploadDir().'/'.$this->company_logo;
     }
 //---------------------------------------------------
     protected function getCompanyUploadRootDir()
