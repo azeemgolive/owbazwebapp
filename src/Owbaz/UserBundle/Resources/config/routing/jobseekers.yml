@@ -1,3 +1,7 @@
+owbaz_users:
+    pattern:  /jobseeker
+    defaults: { _controller: OwbazUserBundle:User:index }
+
 owbaz_user_jobseeker_new:
     pattern:  /jobseeker/new
     defaults: { _controller: OwbazUserBundle:Registration:registration }
@@ -9,6 +13,10 @@ users_jobseekers_create:
 owbaz_jobseeker_dashboard:
     pattern:  jobseeker/dashboard
     defaults: { _controller: OwbazUserBundle:User:jobseekerDashboard }
+
+owbaz_jobseekers_dashboard:
+    pattern:  jobseeker/dashboard
+    defaults: { _controller: OwbazUserBundle:Jobseeker:index }    
 
 owbaz_jobseeker_profile_edit:
     pattern:  jobseeker/profile/edit
