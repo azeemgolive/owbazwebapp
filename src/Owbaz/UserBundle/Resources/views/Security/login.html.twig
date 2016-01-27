@@ -2,7 +2,7 @@
 <section class="reg_blk">
     <div class="action_cnt step_1">
         <h2>Log In</h2>
-        <p>LoveThatFit provides the most realistic shopping experience like you were shopping in the store.</p>
+      
         <form action="{{ path('login_check') }}" method="post" class="form" name="loginform" id="loginform" onsubmit="return validates()">
             <div class="frm_ele">            
                 <input type="text" id="email" name="_username" value="{{ last_username }}" placeholder="Email" />
@@ -23,7 +23,7 @@
         
         </div>
 {% endif %}
-                <input type="hidden" name="_target_path" value="/jobseeker/dashboard" />
+                <input type="hidden" name="_target_path" value="/jobseeker" />
                
             </div>
                  
