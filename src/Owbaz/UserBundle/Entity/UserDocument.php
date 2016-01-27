@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
+use Owbaz\JobseekerBundle\ImageHelper;
 /**
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Owbaz\UserBundle\Repository\UserDocumentRepository")
@@ -37,21 +37,21 @@ class UserDocument
      *
      * @ORM\Column(name="document_name", type="string", length=255)
      */
-    private $documentName;
+    private $document_name;
 
     /**
      * @var text
      *
      * @ORM\Column(name="document_description", type="text")
      */
-    private $documentDescription;
+    private $document_description;
 
     /**
      * @var string
      *
      * @ORM\Column(name="document_size", type="string", length=255)
      */
-    private $documentSize;
+    private $document_size;
 
     /**
      * @var datetime
@@ -72,7 +72,7 @@ class UserDocument
      *
      * @ORM\Column(name="is_cv", type="string", length=255)
      */
-    private $isCv;
+    private $is_cv;
 
 
 
@@ -82,10 +82,12 @@ class UserDocument
     public $file;
 
 
+    
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -101,7 +103,7 @@ class UserDocument
      */
     public function setDocumentName($documentName)
     {
-        $this->documentName = $documentName;
+        $this->document_name = $documentName;
 
         return $this;
     }
@@ -113,7 +115,7 @@ class UserDocument
      */
     public function getDocumentName()
     {
-        return $this->documentName;
+        return $this->document_name;
     }
 
     /**
@@ -125,7 +127,7 @@ class UserDocument
      */
     public function setDocumentDescription($documentDescription)
     {
-        $this->documentDescription = $documentDescription;
+        $this->document_description = $documentDescription;
 
         return $this;
     }
@@ -137,7 +139,7 @@ class UserDocument
      */
     public function getDocumentDescription()
     {
-        return $this->documentDescription;
+        return $this->document_description;
     }
 
     /**
@@ -149,7 +151,7 @@ class UserDocument
      */
     public function setDocumentSize($documentSize)
     {
-        $this->documentSize = $documentSize;
+        $this->document_size = $documentSize;
 
         return $this;
     }
@@ -161,7 +163,7 @@ class UserDocument
      */
     public function getDocumentSize()
     {
-        return $this->documentSize;
+        return $this->document_size;
     }
 
     /**
@@ -221,7 +223,7 @@ class UserDocument
      */
     public function setIsCv($isCv)
     {
-        $this->isCv = $isCv;
+        $this->is_cv = $isCv;
 
         return $this;
     }
@@ -233,10 +235,8 @@ class UserDocument
      */
     public function getIsCv()
     {
-        return $this->isCv;
+        return $this->is_cv;
     }
-
-
 
     /**
      * Set users
@@ -261,80 +261,61 @@ class UserDocument
     {
         return $this->users;
     }
-
-
-    public function getAbsolutePath()
-    {
-        return null === $this->documentName
-            ? null
-            : $this->getUploadRootDir().'/'.$this->documentName;
-    }
-
-    public function getWebPath()
-    {
-        return null === $this->documentName
-            ? null
-            : $this->getUploadDir().'/'.$this->documentName;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/owbaz/users_documents';
-    }
-
-    public function upload()
-    {
+    
+    
+    
+    //-------------------------------------------------
+    //-------------- File Upload ---------------------
+    //-------------------------------------------------
+    
+    public function uploadUserDocument() {
         // the file property can be empty if the field is not required
-        if (null === $this->file) {
+       if (null === $this->file) {
             return;
         }
-
-        // use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-
-        // move takes the target directory and then the
-        // target filename to move to
-
-        $this->setDocumentName($this->file);
-
+        
+        //$previous_image=$this->document_name;
+        $ext = pathinfo($this->file->getClientOriginalName(), PATHINFO_EXTENSION);
+        
+        $this->document_name=uniqid() .'.'. $ext;
+        $this->setDocumentName($this->document_name);    
         $this->file->move(
-            $this->getUploadRootDir(),
-            $this->file->getClientOriginalName()
+                $this->getUploadRootDir(), $this->document_name
         );
-
-        // set the path property to the filename where you've saved the file
-        $this->path = $this->file->getClientOriginalName();
-
-        // clean up the file property as you won't need it anymore
+        
+        //$this->resize_image();
+        //if record is being updated, then delete previous images
+        //if ($this->entity->getId())
+           // $this->deleteCompanyImages($previous_image); 
+        
         $this->file = null;
     }
-
-    /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
-     */
-    public function setFile(UploadedFile $file = null)
+//---------------------------------------------------
+    
+  public function getAbsolutePath()
     {
-        $this->file = $file;
+        return null === $this->document_name
+            ? null
+            : $this->getUploadRootDir().'/'.$this->document_name;
     }
-
-    /**W
-     * Get file.
-     *
-     * @return UploadedFile
-     */
-    public function getFile()
+//---------------------------------------------------
+    public function getWebPath()
     {
-        return $this->file;
+        return null === $this->document_name
+            ? null
+            : $this->getUploadDir().'/'.$this->document_name;
     }
+//---------------------------------------------------
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+//---------------------------------------------------
+    protected function getUploadDir()
+    {
+        return 'uploads/owbaz/users/user_documents';
+    }
+    //---------------------------------------------------
+    
+ 
 }

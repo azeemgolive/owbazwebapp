@@ -189,7 +189,7 @@ class JobseekerController extends Controller
             $entity->setDocumentSize("103303");
             $entity->setCreatedAt(new \DateTime('now'));
             $entity->setUpdatedAt(new \DateTime('now'));
-            $entity->upload();
+            $entity->uploadUserDocument();
             $em->persist($entity);
             $em->flush();
 
