@@ -13,3 +13,7 @@ owbaz_employer_new_job:
 owbaz_jobs_create:
     pattern:  /job/create
     defaults: { _controller: OwbazJobsBundle:Jobs:createNewJob }
+    
+owbaz_jobs_show:
+    pattern:  /jobs/{job_id}/show
+    defaults: { _controller: OwbazJobsBundle:Jobs:show }    

@@ -63,4 +63,12 @@ class JobsController extends Controller
             'form' => $form->createView()));
         }
     }
+    
+    //-------------------------------show job details-----------------------------------------------
+    public function showAction($job_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('OwbazJobsBundle:Jobs')->find($job_id);
+        return $this->render('OwbazJobsBundle:Jobs:show.html.twig',array('job'=>$entity));
+    }
 }

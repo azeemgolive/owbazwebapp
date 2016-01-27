@@ -1,0 +1,221 @@
+{% include 'OwbazSiteBundle::top_navigation.html.twig' %}
+
+<div id="jobPosting">
+    <article class="container">
+        <div class="row listingArea">
+            <div class="col-md-12 col-xs-10 col-sm-10">
+                <div class="job-details-wrap">
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12 col-sm-12"><h1>{{job.jobTitle}}</h1></div>
+
+                        <div id="align_social_media_icons" class="col-md-4">
+                            <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.owbaz.com/job-personal-assistant-pa-125.html" rel="nofollow"><img alt="" src="{{ asset('bundles/owbaz/Site/images/fb.png') }}"></a>
+                            <a target="_blank" href="http://www.twitter.com/intent/tweet?text=Personal+Assistant+%28PA%29&amp;url=http://www.owbaz.com/job-personal-assistant-pa-125.html" rel="nofollow"><img alt="" src="{{ asset('bundles/owbaz/Site/images/tw.png') }}"></a>
+                            <a target="_blank" href="http://plus.google.com/share?url=http://www.owbaz.com/job-personal-assistant-pa-125.html" rel="nofollow"><img alt="" src="{{ asset('bundles/owbaz/Site/images/gp.png') }}"></a>
+                        </div>
+
+                        <div class="col-md-2"></div>
+                    </div>
+
+
+                    <div class="job_position">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <strong>{{job.location.AreaName }}</strong><br>            </div>
+                            <div class="col-md-3">Job Type:</div>
+                            <div class="col-md-3"><strong>{{job.jobType}}</strong></div>
+                            <br>
+
+                            <div class="col-md-6"><strong>{{ job.startDate|date('d-m-Y') }}</strong></div>
+                            <div class="col-md-3">Salary:</div>
+                            <div class="col-md-3"><strong>{{job.jobSalary}}</strong></div>
+                            <br>
+
+                            <div class="col-md-6"><strong>0</strong> Applications</div>
+                            <div class="col-md-3">Start Date:</div>
+                            <div class="col-md-3"><strong>{{ job.startDate|date('d-m-Y') }}</strong></div>
+                            <br>
+
+                        </div>
+                    </div>
+
+
+                    <section>				
+                        <div class="col-md-6">
+                            <br><p align="left" style="margin-bottom: 0.0001pt; line-height: 13.65pt; vertical-align: baseline; background: white;" class="MsoNormal"><b>{{job.jobTitle}}:&nbsp;</b><b>Job description</b><b></b></p><p align="left" style="margin-bottom: 12pt; line-height: 13.65pt; vertical-align: baseline;" class="MsoNormal">A personal assistant (PA), sometimes called an executive secretary or personal/private secretary, works closely with senior managerial or directorial staff to provide administrative support, usually on a one-to-one basis.</p><p align="left" style="margin-bottom: 12pt; line-height: 13.65pt; vertical-align: baseline;" class="MsoNormal">PAs help managers to make the best use of their time by dealing with secretarial and administrative tasks.</p><p align="left" style="margin-bottom: 12pt; line-height: 13.65pt; vertical-align: baseline;" class="MsoNormal">PAs need extensive knowledge of the organization in which they work. They need to know who key personnel are (both external and internal) and understand the organization’s aims and objectives.</p><p align="left" style="margin-bottom: 12pt; line-height: 13.65pt; vertical-align: baseline;" class="MsoNormal">Managers often rely heavily on their PA, trusting that work will be handled efficiently in their absence. Discretion and confidentiality are therefore essential attributes for a successful PA.</p><p align="left" style="margin-bottom: 0.0001pt; line-height: 13.65pt; vertical-align: baseline;" class="MsoNormal"><b>Duties</b></p><p align="left" style="margin-bottom: 12pt; line-height: 13.65pt; vertical-align: baseline;" class="MsoNormal">Personal assistants (PAs) often act as the manager's first point of contact with people from both inside and outside the organization. Tasks are likely to include:</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;devising and maintaining office systems, including data management and filing;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arranging travel, visas and accommodation and, occasionally, travelling with the manager to take notes or dictation at meetings or to provide general assistance during presentations;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;screening phone calls, enquiries and requests, and handling them when appropriate;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;meeting and greeting visitors at all levels of seniority;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;organising and maintaining diaries and making appointments;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dealing with incoming email, faxes and post, often corresponding on behalf of the manager;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carrying out background research and presenting findings;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;producing documents, briefing papers, reports and presentations;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;organising and attending meetings and ensuring the manager is well prepared for meetings;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liaising with clients, suppliers and other staff.</p><p align="left" style="margin-bottom: 12pt; line-height: 13.65pt; vertical-align: baseline;" class="MsoNormal">&nbsp;</p><p align="left" style="margin-bottom: 12pt; line-height: 13.65pt; vertical-align: baseline;" class="MsoNormal">In addition to supporting managers, their team and departments, many PAs also have their own personal workload and responsibilities. The scope of the PA's role can be extensive and additional duties may include:</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carrying out specific projects and research;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;responsibility for accounts and budgets;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;taking on some of the manager's responsibilities and working more closely with management;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deputising for the manager, making decisions and delegating work to others in the manager's absence;</p><p align="left" style="margin: 0in 0in 0.0001pt 21pt; text-indent: -0.25in; line-height: 15.6pt; vertical-align: baseline;" class="MsoNormal">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;being involved in decision-making processes.</p><p class="MsoNormal">&nbsp;</p><p class="MsoNormal">&nbsp;</p><p class="MsoNormal"><b>Qualification:</b>&nbsp;Must have minimum of a Diploma in Secretarial/Administrative courses</p><p class="MsoNormal"><b>Experience:</b>&nbsp;Minimum of 4 years working as a PA to a Director/manager</p><p class="MsoNormal"><b>Salary Budget:</b>&nbsp;Negotiable</p>                
+                        </div>
+
+
+                        <ul class="ordered_job_list">
+                            <div class="col-md-6">
+
+                                <li><a href="company-comsec-security-systems-333.html">
+                                        <img alt="ComSec Security Systems Limited" src="{{ asset(job.users.CompanyWebPath) }}" class="logo-border img-responsive">					     </a></li>
+                                <li><a class="sub-text underline-link" href="jobs-comsec-security-systems-333.html">More jobs from {{job.users.CompanyName }}</a></li>
+
+                                <li><a class="sub-text underline-link" href="company-comsec-security-systems-333.html">Company Details</a></li>
+
+                            </div>
+
+
+                            <div class="col-md-3">
+
+                                <!--	<li><img src="image/mailbox.png" align="left" alt="" /><a href="#" data-toggle="collapse" data-target=".email-collapse">Email this job</a></li> -->
+                                <li><img alt="" id="align-ordered_img" src="{{ asset('bundles/owbaz/Site/images/mailbox.png') }}"><a data-target=".email-collapse" data-toggle="collapse" href="#">Email this job</a></li>
+
+                            </div>
+                        </ul>
+
+                        <div class="col-md-7">
+                            <!--				<img src="image/savebtn.png" align="left" alt="" />-->
+                        </div>
+                    </section>
+
+                    <div class="col-md-5">
+                        <img aling="left" alt="" src="image/return.png"><a href="javascript:GoBack()" id="go_back_button">Go Back</a>
+                    </div>
+                    <div class="col-md-7">		
+                        <form method="post" action="index.php">
+                            <input type="hidden" value="apply" name="mod">
+                            <input type="hidden" value="125" name="posting_id">
+                            <input type="submit" value=" Apply for this Job " class="btn">
+                        </form>
+                    </div>
+
+                    <div class="pull-right">
+                        <form method="post" action="index.php">
+                            <input type="hidden" value="apply" name="mod">
+                            <input type="hidden" value="125" name="posting_id">
+
+                        </form>
+                    </div>
+
+                    <script>
+
+                        function CheckValidEmail(strEmail)
+                        {
+                            if (strEmail.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+
+
+                        function ValidateSendForm(x)
+                        {
+
+                            if (x.sender_name.value == "") {
+                                alert("Please enter your name!");
+                                x.sender_name.focus();
+                                return false;
+                            }
+
+                            if (x.email_address.value == "") {
+                                alert("Please enter your friend's email!");
+                                x.email_address.focus();
+                                return false;
+                            }
+
+                            if (!CheckValidEmail(x.email_address.value))
+                            {
+                                alert(x.email_address.value + " is not a valid email address!");
+                                x.email_address.focus();
+                                return false;
+                            }
+
+
+                            return true;
+                        }
+                    </script>	
+
+
+
+
+                    <div class="clearfix"></div>
+                    <div style="margin-top: -50px;    width: 350px !important;" class="collapse email-collapse text-left" id="email">
+                        <div>		
+                            <a href="javascript:HideEmail()"><img src="images/closeicon.png" alt="close" class="close-login-icon"></a>
+                            <!--email job form-->
+                            <form onsubmit="return ValidateSendForm(this)" method="post" style="padding-top: 25px;text-align: center; margin-top:0px;margin-bottom:0px" class="form-horizontal" action="index.php">
+                                <input type="hidden" value="search" name="mod">
+                                <input type="hidden" value="1" name="ProceedSendFriend">
+                                <input type="hidden" value="125" name="job">								
+
+                                <h4>Send this offer to a friend</h4>
+                                <br>
+                                <label class="control-label" for="inputEmail3">
+                                    Email address to send the offer:
+                                </label>
+                                <br>
+                                <input type="text" name="email_address" placeholder="Email" class="form-control">
+                                <br>
+                                <label class="control-label" for="inputEmail3">
+                                    Your name:
+                                </label>
+                                <br>
+                                <input type="text" name="sender_name" placeholder="Name" class="form-control">
+
+                                <br>
+
+
+                                <div data-sitekey="6LeU1AsTAAAAAEUN-bPfDuAEZvXn0pdGiJrJCEDX" class="g-recaptcha"></div> 
+
+
+
+                                <input type="submit" value="  Send  " class="btn">
+                            </form>
+                            <!--email job form-->
+                            <br>
+
+                        </div>	
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+
+
+<div id="jobListing">
+    <article class="container">
+        <div class="col-md-12">
+            <div class="row">	
+                <div class="col-md-6 col-xs-8 col-sm-8">
+                    <h1><a href="">{{job.jobTitle}}</a></h1>
+                </div>     
+            </div>
+            <div class="job_position"><div class="col-md-8">
+                    <ul>
+
+                        <li>Job Type: <strong>{{job.jobType}}</strong></li>
+                        <li>Location: <strong>{{job.location.AreaName }}</strong></li>
+                        <li>Salary: <strong>{{job.jobSalary}}</strong></li> 
+                        <li>Posted on: <strong>{{ job.startDate|date('d-m-Y') }}</strong></li>
+                        <li>Last Date to Apply: <strong>{{ job.expireDate|date('d-m-Y') }}</strong></li>
+                        <li>Posted by: <strong>{{job.users.CompanyName }}</strong></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="company-wrap" style="float: right; height: 200px !important;">
+
+                        {%if(job.users.CompanyLogo!='')%}                  
+                            <img src="{{ asset(job.users.CompanyWebPath) }}" class="img-responsive logo-results"/>        
+                        {%endif%} 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-6 col-sm-6">
+                <a id="applyjob" href="">Click for more job Details</a>
+            </div>	<br></div>
+    </article>
+</div>
+
+
+{% include 'OwbazSiteBundle::bottom_navigation.html.twig' %}
