@@ -74,6 +74,13 @@ class UserDocument
      */
     private $is_cv;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="document_type", type="string", length=255)
+     */
+    private $DocumentType;
+
 
 
     /**
@@ -278,6 +285,9 @@ class UserDocument
         $ext = pathinfo($this->file->getClientOriginalName(), PATHINFO_EXTENSION);
         
         $this->document_name=uniqid() .'.'. $ext;
+        $this->setDocumentType($ext);
+        $file_size = $this->file->getSize();
+        $this->setDocumentSize($file_size);
         $this->setDocumentName($this->document_name);    
         $this->file->move(
                 $this->getUploadRootDir(), $this->document_name
@@ -318,4 +328,30 @@ class UserDocument
     //---------------------------------------------------
     
  
+
+
+
+    /**
+     * Set documentType
+     *
+     * @param string $documentType
+     *
+     * @return UserDocument
+     */
+    public function setDocumentType($documentType)
+    {
+        $this->DocumentType = $documentType;
+
+        return $this;
+    }
+
+    /**
+     * Get documentType
+     *
+     * @return string
+     */
+    public function getDocumentType()
+    {
+        return $this->DocumentType;
+    }
 }

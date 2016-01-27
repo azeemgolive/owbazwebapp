@@ -4,3 +4,11 @@ Add New Document
 <br />
 
 <a href="{{ path('owbaz_jobseeker_document_add') }}">Add New Document</a>
+
+<br />
+<br />
+
+{% for document in document_entity %}
+    {{ document.DocumentName }}
+    <br />
+{%endfor%}

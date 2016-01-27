@@ -157,7 +157,12 @@ class JobseekerController extends Controller
     //--------------------------------Document Show-------------------------------------------------
     public function documentpageAction()
     {
-        return $this->render('OwbazJobseekerBundle:Jobseekers:show_document.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $user_id = $this->get('security.context')->getToken()->getUser()->getId();
+        $entity = $em->getRepository('OwbazUserBundle:UserDocument')->getAllDocuments($user_id);
+        return $this->render('OwbazJobseekerBundle:Jobseekers:show_document.html.twig',array(
+            'document_entity' => $entity
+        ));
 
     }
 
@@ -186,7 +191,6 @@ class JobseekerController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->setUsers($jobseeker);
-            $entity->setDocumentSize("103303");
             $entity->setCreatedAt(new \DateTime('now'));
             $entity->setUpdatedAt(new \DateTime('now'));
             $entity->uploadUserDocument();
@@ -194,6 +198,7 @@ class JobseekerController extends Controller
             $em->flush();
 
         }
+        return $this->redirect($this->generateUrl('owbaz_jobseeker_dashboard'));
 
     }
    
